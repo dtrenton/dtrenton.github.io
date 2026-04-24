@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trent W. Dawson, Ph.D.</title>
+    <meta
+      name="description"
+      content="Academic CV website for Trent W. Dawson, Ph.D., featuring appointments, publications, grants, teaching, service, and honors."
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="Trent W. Dawson home">Trent W. Dawson</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="#education">Education</a>
+          <a href="#appointments">Appointments</a>
+          <a href="#publications">Publications</a>
+          <a href="#grants">Grants</a>
+          <a href="#teaching">Teaching</a>
+          <a href="#service">Service</a>
+          <a href="assets/current-cv.docx">CV</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top" class="cv-page">
+      <header class="cv-header">
+        <h1>Trent W. Dawson, Ph.D.</h1>
+        <p class="cv-summary">
+          Research in computer science education and cyber education, as well as teacher preparation pathways.
+          Postdoctoral Fellow at the University of Nevada, Las Vegas. Incoming Assistant Professor and Director
+          of the Governors Cyber Academy at Dakota State University (June 2026).
+        </p>
+        <dl class="contact-list" data-render="contact"></dl>
+      </header>
+
+      <section class="section" id="education">
+        <h2>Education</h2>
+        <div class="stack" data-section="education"></div>
+      </section>
+
+      <section class="section" id="appointments">
+        <h2>Academic Appointments</h2>
+        <div class="stack" data-section="appointments"></div>
+      </section>
+
+      <section class="section" id="publications">
+        <h2>Publications & Presentations</h2>
+        <div class="grouped-list" data-section="publications"></div>
+      </section>
+
+      <section class="section" id="grants">
+        <h2>Grants & Research Projects</h2>
+        <div class="grouped-list" data-section="grants"></div>
+      </section>
+
+      <section class="section" id="teaching">
+        <h2>Teaching</h2>
+        <div class="grouped-list" data-section="teaching"></div>
+      </section>
+
+      <section class="section" id="service">
+        <h2>Service</h2>
+        <div class="grouped-list" data-section="service"></div>
+      </section>
+
+      <section class="section" id="honors">
+        <h2>Honors</h2>
+        <div class="stack" data-section="honors"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Built from <a href="assets/current-cv.docx">current-cv.docx</a>.</p>
+    </footer>
+
+    <script src="assets/site-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

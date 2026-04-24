@@ -1,0 +1,373 @@
+{
+  "profile": {
+    "name": "Trent W. Dawson, Ph.D.",
+    "affiliation": "University of Nevada, Las Vegas",
+    "location": "Las Vegas, Nevada 89154",
+    "summary": "Research examines pathways into computing and teaching, with related strands in community college computer science and cyber education, equitable participation, and apprenticeship-based teacher preparation. Currently a Postdoctoral Fellow at the University of Nevada, Las Vegas, where postdoctoral work focuses on apprenticeship teacher preparation. Independent research focuses on community college computer science and cyber pathways. Incoming Assistant Professor and Director of the Governors Cyber Academy at Dakota State University beginning June 2026.",
+    "focus": "Research examines pathways into computing and teaching, with related strands in community college computer science and cyber education, equitable participation, and apprenticeship-based teacher preparation. Currently a Postdoctoral Fellow at the University of Nevada, Las Vegas, where postdoctoral work focuses on apprenticeship teacher preparation. Independent research focuses on community college computer science and cyber pathways. Incoming Assistant Professor and Director of the Governors Cyber Academy at Dakota State University beginning June 2026.",
+    "contact": [
+      {
+        "label": "Email",
+        "value": "dtrentonvt [at] gmail [dot] com"
+      },
+      {
+        "label": "ORCID",
+        "value": "0000-0003-1845-8696"
+      },
+      {
+        "label": "Location",
+        "value": "Las Vegas, Nevada 89154"
+      }
+    ],
+    "stats": [
+      {
+        "value": "33",
+        "label": "publication entries"
+      },
+      {
+        "value": "7",
+        "label": "grant entries"
+      },
+      {
+        "value": "6",
+        "label": "teaching entries"
+      },
+      {
+        "value": "22",
+        "label": "service entries"
+      }
+    ]
+  },
+  "sections": {
+    "education": [
+      {
+        "degree": "Ph.D.",
+        "institution": "Louisiana State University",
+        "year": "2022",
+        "text": "Ph.D., Louisiana State University (2022)"
+      },
+      {
+        "degree": "M.Ed.",
+        "institution": "Virginia Polytechnic Institute and State University",
+        "year": "2017",
+        "text": "M.Ed., Virginia Polytechnic Institute and State University (2017)"
+      },
+      {
+        "degree": "B.B.A.",
+        "institution": "The University of Oklahoma",
+        "year": "2002",
+        "text": "B.B.A., The University of Oklahoma (2002)"
+      }
+    ],
+    "appointments": [
+      {
+        "status": "Incoming Appointment",
+        "titles": [
+          "Assistant Professor",
+          "Director, Governors Cyber Academy"
+        ],
+        "details": [
+          "Dakota State University",
+          "College of Education and Human Performance"
+        ],
+        "date": "Begins June 2026"
+      },
+      {
+        "status": "Current Appointment",
+        "titles": [
+          "Postdoctoral Fellow"
+        ],
+        "details": [
+          "University of Nevada, Las Vegas",
+          "College of Education"
+        ],
+        "date": "2025–2026"
+      },
+      {
+        "status": "Prior Appointments",
+        "titles": [
+          "Postdoctoral Researcher",
+          "Adjunct Assistant Professor"
+        ],
+        "details": [
+          "The University of Texas at Arlington",
+          "Department of Curriculum and Instruction"
+        ],
+        "date": "2024"
+      }
+    ],
+    "publications": [
+      {
+        "subheading": "Peer-Reviewed Conference Proceedings",
+        "entries": [
+          "Dawson, T. W. (2026). Exploring self-doubt in community college computer science: Evidence from exploratory factor analysis. In Proceedings of the 57th Technical Symposium on Computer Science Education (SIGCSE), pp. 1283–1284. St. Louis, MO. https://doi.org/10.1145/3770761.3777171",
+          "Dawson, T. W., Sahin, B., Hack, M., & Fasching-Varner, K. J. (2026). Investigating pre-service teachers’ perceived program support and its relationship to teaching self-efficacy across traditional and apprenticeship pathways. In Proceedings of the Annual Meeting of the American Educational Research Association (AERA), Los Angeles, CA.",
+          "Dawson, T. W. (2026). Adapting computing attitudes surveys for community college students: Emerging constructs from factor analysis. In Proceedings of the Annual Meeting of the American Educational Research Association (AERA), Los Angeles, CA.",
+          "Joshi, D., Joswick, C., Jocius, R., Albert, J., Blanton, M., Petrulin, B., & Dawson, T.W. (2025). Assessing elementary teachers’ knowledge of integrated computational thinking. In Proceedings of the 56th Annual Technical Symposium on Computer Science Education (SIGCSE TS 2025), pp. 1501–1502. Pittsburgh, PA. https://doi.org/10.1145/3641555.3705131",
+          "Dawson, T. W., Calabrese, J. E., & Joswick, C. (2025). The learning styles zombie concept: A systematic review of NCTM publications. In Proceedings of the Annual Meeting of the American Educational Research Association (AERA), Denver, CO.",
+          "Dawson, T. W. (2021). The block-based, text-based, and CS1 prepared. In Proceedings of the 17th Annual Conference on International Computing Education Research (ICER), pp. 413–414. Virtual. https://doi.org/10.1145/3446871.3469777",
+          "Alegre, F., Moreno, J., Dawson, T., Tanjong, E. E., & Kirshner, D. H. (2020). Computational thinking for STEM teacher leadership training at Louisiana State University. In Proceedings of the Annual Research on Equity and Sustained Participation in Engineering, Computing, and Technology (RESPECT), pp. 1–2. Portland, OR. https://doi.org/10.1109/RESPECT49803.2020.9272455"
+        ]
+      },
+      {
+        "subheading": "Peer-Reviewed Journal Articles in Revision/Review",
+        "entries": [
+          "Dawson, T.W., Joswick, C., Tobin, K., & Karadimou, O. (in press). Exploring community college students’ perceptions of computer science: A pilot study of adapted computing attitudes surveys. Community College Enterprise.",
+          "Dawson, T.W., Butler, M., & Fasching-Varner, K.J. (revise & resubmit). What counts as competent teaching? A systematic narrative synthesis of teacher competencies in K–12 education. Teaching and Teacher Education.",
+          "Dawson, T.W., Hack, M., Fasching-Varner, K.J. (revise and resubmit). Evaluating an online orientation within an apprenticeship teacher preparation pathway: Initial evidence of student satisfaction and preparedness. The Journal of Continuing Higher Education.",
+          "Dawson, T. W., Hoffman, A., Sahin, B., & Fasching-Varner, K. J. (out for review). Program support and preservice teacher self-efficacy: A causal-comparative analysis of traditional and apprenticeship preparation pathways. Action in Teacher Education"
+        ]
+      },
+      {
+        "subheading": "Peer-Reviewed Journal Articles in Preparation",
+        "entries": [
+          "Hoffman, A., Dawson, T. W., & Fasching-Varner, K. J. (in preparation). Comparative analysis of start timing on satisfaction in an online asynchronous orientation.",
+          "Salguero, M., Dawson, T.W. (in preparation).bSystematic literature review examining institutional supports in shaping English learners’ transition into first-year college."
+        ]
+      },
+      {
+        "subheading": "Peer-Reviewed Conference Presentations",
+        "entries": [
+          "Dawson, T. W. (2026). A Pilot Study Exploring Attitudinal Dimensions in Community College Computer Science: Evidence from Exploratory Factor Analysis. Poster presented at the 57th ACM Technical Symposium on Computer Science Education (SIGCSE), St. Louis, MO.",
+          "Dawson, T. W., Hoffman, A., Sahin, B., Hack, M., & Fasching-Varner, K. J. (2026). Investigating pre-service teachers’ perceived program support and its relationship to teaching self-efficacy across traditional and apprenticeship pathways. Accepted presentation at the Annual Meeting of the American Educational Research Association (AERA), Los Angeles, CA.",
+          "Dawson, T. W. (2026). Adapting computing attitudes surveys for community college students: Emerging constructs from factor analysis. Accepted presentation at the Annual Meeting of the American Educational Research Association (AERA), Los Angeles, CA.",
+          "Joshi, D., Joswick, C., Jocius, R., Albert, J., Blanton, M., Petrulin, B., & Dawson, T. W. (2025). Assessing elementary teachers’ knowledge of integrated computational thinking. Poster presented at the 56th ACM Technical Symposium on Computer Science Education (SIGCSE), Pittsburgh, PA.",
+          "Dawson, T. W., Calabrese, J. E., & Joswick, C. (2025). The learning styles zombie concept: A systematic review of NCTM publications. Peer-reviewed paper accepted for presentation at the Annual Meeting of the American Educational Research Association (AERA), Denver, CO.",
+          "Dawson, T.W., Joswick, C. (2025). Investigating the influence of K–12 computer science experience on community college students’ interest in programming. Peer-reviewed paper presented at the 2025 Annual Conference for the Southeast Educational Research Association (SERA), San Antonio, TX.",
+          "Dawson, T.W., & Karadimou, O. (2025). Navigating the Nevada Forward undergraduate apprenticeship program. Poster presented at the Truckee Meadows Community College Annual EDU Night, Reno, NV.",
+          "Butler, M., Nolan, J., Karadimou, O., Dawson, T.W., Hack, M., & Fasching-Varner, K. J. (2025). The Nevada Forward Initiative: An apprenticeship program strengthening the teacher preparation pipeline. Poster presented at the 2025 UNLV College of Education Annual Education Expo Conference, Las Vegas, NV.",
+          "Dawson, T.W., & Manson, S. (2024). Teaching strategies for academic medicine. Session presented at the Texas Academy of Family Physicians Semiannual Conference, Austin, TX.",
+          "Dawson, T.W. (2024). Demystifying nuances among variable types in statistics. Session presented at the University of North Texas Health Science Center at Fort Worth’s Graduate Certificate in Medical Education Annual Conference, Fort Worth, TX.",
+          "Dawson, T.W., & Hollins, K. (2022). Culturally responsive pedagogy to cultivate an inclusive learning environment. Session presented at the Curriculum Camp Annual Conference at Louisiana State University, Baton Rouge, LA.",
+          "Dawson, T.W. (2022). An evaluation of attitudes and beliefs toward computer science at community colleges. Session presented at the Louisiana Educational Research Annual Conference (LERA), Lafayette, LA.",
+          "Dawson, T.W. (2021). The block-based, text-based, and CS1 prepared. Paper presentation at the 17th Annual ACM Conference on International Computing Education Research (ICER). August 16–19, 2021, Virtual Event (due to COVID-19).",
+          "Dawson, T.W., Alegre, F., & Moreno, J. (2021). A culmination of strategies for K–12 educators to assess students’ CS knowledge. Paper session presented at the UTeach STEM Educators Annual Conference, Virtual Event (due to COVID-19).",
+          "Dawson, T.W. (2021). Comparing 15 computer science assessment strategies for pre-college learners: A systematic review of the CS literature. Paper session presented at the Curriculum Camp Annual Conference at Louisiana State University, Baton Rouge, LA.",
+          "Dawson, T.W., Alegre, F., & Moreno, J. (2020). A modified 5Es Instructional Model tailored for computer science educators. Paper presentation at the UTeach STEM Educators Annual Conference, Austin, TX. (Conference canceled due to COVID-19).",
+          "Jenevein, S., Kirby, L., Harlow, L., Moreno, J., Dawson, T.W., & Thompson, R. (2020). Expanding computer science certification pathways. Accepted for presentation at the UTeach STEM Educators Annual Conference, Austin, TX. (Conference canceled due to COVID-19).",
+          "Dawson, T.W., Alegre, F. & Moreno, J. (2020). Adding a 6th \"E\" to the 5Es Instructional Model in computer science education. Accepted for presentation at the American Association for the Advancement of Curriculum Studies (AAACS) Annual Conference. San Francisco, CA. (Conference canceled due to COVID-19).",
+          "Dawson, T.W., Fernando, A., & Moreno, J. (2020). A modified 5Es Instructional Model tailored for computer science educators. Session presented at the Louisiana Educational Research Annual Conference (LERA), Lafayette, LA.",
+          "Dawson, T.W., & Reed, G. (2019). Improving educational outcomes: Blending online with traditional face-to-face instruction. Session presented at the Coalition of Adult Basic Education (COABE) Annual Conference, New Orleans, LA."
+        ]
+      }
+    ],
+    "grants": [
+      {
+        "title": "Nevada Forward Initiative",
+        "details": [
+          "PI: Kenny Varner",
+          "Award: $3,000,000 (US DoE Augustus F. Hawkins Centers of Excellence Program Grant)"
+        ],
+        "metadata": "University of Nevada, Las Vegas | As a Postdoc | Jan 2025–present"
+      },
+      {
+        "title": "Community college computer science and cyber study",
+        "details": [
+          "PI: Trent Dawson",
+          "UNLV IRB and CSN IRB approved",
+          "Status: Second semester of data collection"
+        ],
+        "metadata": "University of Nevada, Las Vegas (UNLV) and College of Southern Nevada (CSN) | Independent Research | July 2025–present"
+      },
+      {
+        "title": "Math + SEL + E (US DoE SEED Grant)",
+        "details": [
+          "PI: Candace Joswick",
+          "Award: $5,600,000 (Award #S423A220084)"
+        ],
+        "metadata": "The University of Texas at Arlington | As a Postdoc | June 2024–Dec 2024"
+      },
+      {
+        "title": "Unpacking Computational Thinking (NSF DRK–12)",
+        "details": [
+          "PIs: Jennifer Albert, Candace Joswick",
+          "Awards: $2,550,527 (Award #2300322), $443,801 (Award #2300323)"
+        ],
+        "metadata": "The Citadel and The University of Texas at Arlington | As a Postdoc | June 2024–Dec 2024"
+      },
+      {
+        "title": "Integrating K–12 AI/Cybersecurity into Computer Science (NSF DRK–12)",
+        "details": [
+          "PI: Candace Joswick",
+          "Proposed Budget: $820,000"
+        ],
+        "metadata": "The University of Texas at Arlington | As a Grant Writer | Oct 2024"
+      },
+      {
+        "title": "Baton Rouge Bringing Youth Technology Education Success (NSF CISE/CNS)",
+        "details": [
+          "PI: Juana Moreno",
+          "Award: $5,000,000 (Award #1923573)"
+        ],
+        "metadata": "Louisiana State University | As a Graduate Assistant | May 2020–May 2022"
+      },
+      {
+        "title": "Expanding and Strengthening the STEM Teacher Workforce (US DoE SEED Grant)",
+        "details": [
+          "PI: Juana Moreno",
+          "Award: $1,000,000 (Award #U423A180139)"
+        ],
+        "metadata": "Louisiana State University | As a Graduate Assistant | May 2019–May 2021"
+      }
+    ],
+    "teaching": [
+      {
+        "title": "EDUC 5394: Understanding and Designing Classroom Research (Graduate)",
+        "metadata": "The University of Texas at Arlington | Fall 2024",
+        "details": [
+          "Instructor of Record"
+        ]
+      },
+      {
+        "title": "AMED 5600: Scholarly Activity for Academic Health Professionals (Graduate)",
+        "metadata": "University of North Texas Health Science Center | Spring 2024",
+        "details": [
+          "Instructor of Record"
+        ]
+      },
+      {
+        "title": "English and math (High School Equivalency)",
+        "metadata": "South Louisiana Community College & Baton Rouge Community College | 2018–2019",
+        "details": [
+          "Instructor of Record"
+        ]
+      },
+      {
+        "title": "Teaching Assistant",
+        "metadata": "Louisiana State University | 2019–2022",
+        "details": [
+          "CSC 2700: Computer Science Teaching Methods (Undergraduate)",
+          "EDCI 7141: Studies in the Teaching of Mathematics in Secondary Schools (Graduate)",
+          "EDCI 2500: Knowing and Learning in Mathematics Education (Undergraduate)",
+          "EDCI 7821 Problems with Curriculum and Instruction (Graduate)"
+        ]
+      },
+      {
+        "title": "Quarterly Pre-Service Teacher PD, University of Nevada, Las Vegas",
+        "metadata": "Professional Development Workshops | 2025–present",
+        "details": []
+      },
+      {
+        "title": "Monthly In-Service Teacher PD, The University of Texas at Arlington",
+        "metadata": "Professional Development Workshops | Fall 2024",
+        "details": []
+      }
+    ],
+    "service": [
+      {
+        "subheading": "Supervision of Graduate Assistants",
+        "entries": [
+          {
+            "text": "Maria Salguero, PhD, Education Counseling, UNLV",
+            "date": "2026"
+          },
+          {
+            "text": "Sulabh Khadka, PhD STEM Education, UNLV",
+            "date": "2025"
+          },
+          {
+            "text": "Shaunak Amble, MS Computer Science, UTA",
+            "date": "2024"
+          },
+          {
+            "text": "Keerthi Mandalapu, MS Data Science, UTA",
+            "date": "2024"
+          }
+        ]
+      },
+      {
+        "subheading": "Service to Organizations",
+        "entries": [
+          {
+            "text": "Committee Member, NSF BRICCS-TX—San Jacinto College",
+            "date": "2024–2025"
+          },
+          {
+            "text": "Committee Member, DBER—UC Merced",
+            "date": "2023"
+          },
+          {
+            "text": "Executive Officer, Curriculum Theory Project—LSU",
+            "date": "2020–2022"
+          },
+          {
+            "text": "Treasurer, Instructional Design and Technology Association—Virginia Tech",
+            "date": "2016–2017"
+          }
+        ]
+      },
+      {
+        "subheading": "Service to Journals and Conferences",
+        "entries": [
+          {
+            "text": "Session Chair, Accessible Computing, SIGCSE",
+            "date": "2026"
+          },
+          {
+            "text": "Manuscript Reviewer, Community College Review",
+            "date": "2025"
+          },
+          {
+            "text": "Proposal Reviewer, AERA, Division K, Section 6",
+            "date": "2025, 2026"
+          },
+          {
+            "text": "Proposal Reviewer, ACM SIGCSE Technical Symposium",
+            "date": "2025, 2026"
+          },
+          {
+            "text": "Proposal Reviewer, Society for Information Technology and Teacher Education",
+            "date": "2026"
+          },
+          {
+            "text": "Proposal Reviewer, Southeastern Educational Research Association",
+            "date": "2024–2026"
+          },
+          {
+            "text": "Proposal Reviewer, Curriculum Theory Project Conference",
+            "date": "2020–2022"
+          },
+          {
+            "text": "Invited Speaker, LSU Graduate Student Association Lunch and Learn",
+            "date": "2022"
+          },
+          {
+            "text": "Session Chair, Louisiana Educational Research Association Conference",
+            "date": "2021, 2022"
+          },
+          {
+            "text": "Session Chair, American Association Advancement of Curriculum Studies",
+            "date": "2020, 2022"
+          },
+          {
+            "text": "Moderator, American Association Advancement of Curriculum Studies",
+            "date": "2021, 2022"
+          }
+        ]
+      },
+      {
+        "subheading": "Service to Community",
+        "entries": [
+          {
+            "text": "Co-chair, Fundraising Committee, Dallas Roundup",
+            "date": "2024–2025"
+          },
+          {
+            "text": "Chair, Volunteer Committee, Dallas Roundup",
+            "date": "2023–2024"
+          },
+          {
+            "text": "Chair, Volunteer Committee, Black Men in White Coats Youth Summit",
+            "date": "2023–2024"
+          }
+        ]
+      }
+    ],
+    "honors": [
+      "Fellowship",
+      "International Computing Education Research (ICER) Doctoral Consortium (2021)",
+      "One of 20 doctoral students selected internationally.",
+      "Presented dissertation research to esteemed CS faculty who offered feedback for improvement."
+    ]
+  }
+}
