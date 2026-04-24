@@ -265,6 +265,32 @@ a {
   font-weight: 500;
 }
 
+.honor-entry {
+  display: grid;
+  gap: 2px;
+}
+
+.honor-entry + .honor-entry {
+  margin-top: 16px;
+}
+
+.honor-title,
+.honor-label,
+.honor-detail {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.honor-title {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.honor-label,
+.honor-detail {
+  color: var(--muted);
+}
+
 .group,
 .publication-group,
 .service-group {
@@ -312,6 +338,17 @@ a {
 
 .service-date {
   color: var(--muted);
+}
+
+.skills-list,
+.affiliations-list {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.skills-entry + .skills-entry,
+.affiliations-entry + .affiliations-entry {
+  margin-top: 4px;
 }
 
 .site-footer {

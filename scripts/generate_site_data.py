@@ -31,13 +31,15 @@ SECTION_ALIASES = {
     "SERVICE": "service",
     "AWARDS": "honors",
     "HONORS": "honors",
+    "SOFTWARE SKILLS": "skills",
+    "TECHNICAL SKILLS": "skills",
+    "SKILLS": "skills",
+    "ACADEMIC AFFILIATIONS": "affiliations",
 }
 
 KNOWN_MAJOR_HEADINGS = {
     *SECTION_ALIASES.keys(),
     "PROFESSIONAL EXPERIENCE",
-    "TECHNICAL SKILLS",
-    "ACADEMIC AFFILIATIONS",
 }
 
 GRANT_ROLES = {
@@ -369,6 +371,26 @@ def grouped_service(lines: list[str]) -> list[dict[str, object]]:
     return groups
 
 
+def grouped_honors(lines: list[str]) -> list[dict[str, object]]:
+    entries: list[dict[str, object]] = []
+    label = ""
+    current: dict[str, object] | None = None
+
+    for line in lines:
+        if not label:
+            label = line
+            continue
+
+        if current is None:
+            current = {"title": line, "label": label, "details": []}
+            entries.append(current)
+            continue
+
+        current["details"].append(line)
+
+    return entries
+
+
 def section_count(section: list[object]) -> int:
     return len(section)
 
@@ -418,6 +440,7 @@ def build_data() -> dict[str, object]:
         "grants": grouped_grants(sections["grants"]),
         "teaching": grouped_teaching(sections["teaching"]),
         "service": grouped_service(sections["service"]),
+        "honors": grouped_honors(sections["honors"]),
     }
     return {
         "profile": profile_from(header, rendered_sections),

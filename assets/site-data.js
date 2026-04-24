@@ -364,10 +364,31 @@ window.SITE_DATA = {
       }
     ],
     "honors": [
-      "Fellowship",
-      "International Computing Education Research (ICER) Doctoral Consortium (2021)",
-      "One of 20 doctoral students selected internationally.",
-      "Presented dissertation research to esteemed CS faculty who offered feedback for improvement."
+      {
+        "title": "International Computing Education Research (ICER) Doctoral Consortium (2021)",
+        "label": "Fellowship",
+        "details": [
+          "One of 20 doctoral students selected internationally.",
+          "Presented dissertation research to esteemed CS faculty who offered feedback for improvement."
+        ]
+      }
+    ],
+    "skills": [
+      "R (advanced): descriptive and inferential statistics, assumption testing, exploratory and confirmatory factor analysis (EFA/CFA), survey reliability analysis, missing data imputation, multiple regression with model fit evaluation, correlation analysis, and data visualization",
+      "Atlas.ti (intermediate) qualitative thematic coding",
+      "Qualtrics (expert): survey design, distribution, and data export",
+      "Canvas (expert): course design, asynchronous and hybrid instructional delivery",
+      "Scratch, Python, Java, Haskell (intermediate)",
+      "LaTeX (expert): technical manuscript preparation and formatting"
+    ],
+    "affiliations": [
+      "Special Interest Group on Computer Science Education",
+      "American Educational Researcher Association",
+      "Southwest Educational Research Association",
+      "Computer Science Teachers Association",
+      "Association for Computing Machinery",
+      "International Computing Research Association",
+      "Computer Science for ALL"
     ]
   }
 };

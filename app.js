@@ -23,6 +23,18 @@
     return node;
   };
 
+  const escapeHtml = (text) => String(text)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+
+  const formatPublication = (text) => escapeHtml(text)
+    .replaceAll("Trent W. Dawson", "<strong>Trent W. Dawson</strong>")
+    .replaceAll("Dawson, T. W.", "<strong>Dawson, T. W.</strong>")
+    .replaceAll("Dawson, T.W.", "<strong>Dawson, T.W.</strong>");
+
   const renderSimpleItem = (item) => {
     const card = el("article", "item");
     if (typeof item === "string") {
@@ -104,7 +116,9 @@
       const list = el("div", "publication-list");
       group.entries.forEach((entry) => {
         const card = el("article", "publication");
-        card.appendChild(el("p", "raw-entry", entry));
+        const citation = el("p", "raw-entry");
+        citation.innerHTML = formatPublication(entry);
+        card.appendChild(citation);
         list.appendChild(card);
       });
 
@@ -134,6 +148,33 @@
       if (entry.date) {
         block.appendChild(el("p", "appointment-date", entry.date));
       }
+      container.appendChild(block);
+    });
+  };
+
+  const renderSkills = (container, entries) => {
+    container.innerHTML = "";
+    const list = el("ul", "skills-list");
+    entries.forEach((entry) => list.appendChild(el("li", "skills-entry", entry)));
+    container.appendChild(list);
+  };
+
+  const renderAffiliations = (container, entries) => {
+    container.innerHTML = "";
+    const list = el("ul", "affiliations-list");
+    entries.forEach((entry) => list.appendChild(el("li", "affiliations-entry", entry)));
+    container.appendChild(list);
+  };
+
+  const renderHonors = (container, entries) => {
+    container.innerHTML = "";
+    entries.forEach((entry) => {
+      const block = el("article", "honor-entry");
+      block.appendChild(el("p", "honor-title", entry.title));
+      if (entry.label) {
+        block.appendChild(el("p", "honor-label", entry.label));
+      }
+      entry.details.forEach((detail) => block.appendChild(el("p", "honor-detail", detail)));
       container.appendChild(block);
     });
   };
@@ -176,6 +217,21 @@
 
     if (key === "service" && Array.isArray(section)) {
       renderService(container, section);
+      return;
+    }
+
+    if (key === "skills" && Array.isArray(section)) {
+      renderSkills(container, section);
+      return;
+    }
+
+    if (key === "affiliations" && Array.isArray(section)) {
+      renderAffiliations(container, section);
+      return;
+    }
+
+    if (key === "honors" && Array.isArray(section) && section.every((item) => item.title && item.label)) {
+      renderHonors(container, section);
       return;
     }
 
