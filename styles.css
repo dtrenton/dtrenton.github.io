@@ -293,6 +293,7 @@ a {
 
 .group,
 .publication-group,
+.grant-group,
 .service-group {
   display: grid;
   gap: 8px;
@@ -300,6 +301,7 @@ a {
 
 .group + .group,
 .publication-group + .publication-group,
+.grant-group + .grant-group,
 .service-group + .service-group {
   margin-top: 22px;
 }
@@ -316,6 +318,33 @@ a {
 .publication-list {
   display: grid;
   gap: 9px;
+}
+
+.grant-list {
+  display: grid;
+  gap: 14px;
+}
+
+.grant-entry {
+  display: grid;
+  gap: 2px;
+}
+
+.grant-title,
+.grant-institution,
+.grant-date {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.grant-title {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.grant-institution,
+.grant-date {
+  color: var(--muted);
 }
 
 .service-list {

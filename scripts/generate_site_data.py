@@ -155,20 +155,30 @@ def split_labeled_details(text: str) -> tuple[str, list[str]]:
 
 
 def grouped_grants(lines: list[str]) -> list[dict[str, object]]:
-    entries: list[dict[str, object]] = []
+    groups: list[dict[str, object]] = []
     role = ""
     base_role = ""
     institution = ""
     current: dict[str, object] | None = None
 
+    def group_for(subheading: str) -> dict[str, object]:
+        title = subheading or "Grant Experience"
+        for group in groups:
+            if group["subheading"] == title:
+                return group
+        group = {"subheading": title, "entries": []}
+        groups.append(group)
+        return group
+
     def finish() -> None:
         nonlocal current, role
         if current:
-            current["metadata"] = compact_metadata([current.get("institution", ""), current.get("role", ""), current.get("date", "")])
-            current.pop("institution", None)
-            current.pop("role", None)
-            current.pop("date", None)
-            entries.append(current)
+            group_for(current.get("role", "")).setdefault("entries", []).append({
+                "title": current.get("title", ""),
+                "institution": current.get("institution", ""),
+                "date": current.get("date", ""),
+                "details": current.get("details", []),
+            })
             if role == "Independent Research":
                 role = base_role
             current = None
@@ -220,7 +230,7 @@ def grouped_grants(lines: list[str]) -> list[dict[str, object]]:
         institution = line
 
     finish()
-    return entries
+    return [group for group in groups if group["entries"]]
 
 
 def grouped_publications(lines: list[str]) -> list[dict[str, object]]:
@@ -423,7 +433,7 @@ def profile_from(header: list[str], sections: dict[str, list[str]]) -> dict[str,
         ],
         "stats": [
             {"value": str(sum(len(group["entries"]) for group in sections["publications"])), "label": "publication entries"},
-            {"value": str(section_count(sections["grants"])), "label": "grant entries"},
+            {"value": str(sum(len(group["entries"]) for group in sections["grants"])), "label": "grant entries"},
             {"value": str(section_count(sections["teaching"])), "label": "teaching entries"},
             {"value": str(sum(len(group["entries"]) for group in sections["service"])), "label": "service entries"},
         ],

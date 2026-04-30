@@ -127,6 +127,35 @@
     });
   };
 
+  const renderGrants = (container, groups) => {
+    container.innerHTML = "";
+    groups.forEach((group) => {
+      const groupNode = el("section", "grant-group");
+      groupNode.appendChild(el("h3", "group-title", group.subheading));
+
+      const list = el("div", "grant-list");
+      group.entries.forEach((entry) => {
+        const block = el("article", "grant-entry");
+        block.appendChild(el("h3", "grant-title", entry.title));
+        if (entry.institution) {
+          block.appendChild(el("p", "grant-institution", entry.institution));
+        }
+        if (entry.date) {
+          block.appendChild(el("p", "grant-date", entry.date));
+        }
+        if (entry.details && entry.details.length) {
+          const details = el("ul", "entry-details");
+          entry.details.forEach((detail) => details.appendChild(el("li", "", detail)));
+          block.appendChild(details);
+        }
+        list.appendChild(block);
+      });
+
+      groupNode.appendChild(list);
+      container.appendChild(groupNode);
+    });
+  };
+
   const renderEducation = (container, entries) => {
     container.innerHTML = "";
     entries.forEach((entry) => {
@@ -212,6 +241,11 @@
 
     if (key === "publications" && Array.isArray(section)) {
       renderPublications(container, section);
+      return;
+    }
+
+    if (key === "grants" && Array.isArray(section)) {
+      renderGrants(container, section);
       return;
     }
 

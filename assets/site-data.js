@@ -153,61 +153,88 @@ window.SITE_DATA = {
     ],
     "grants": [
       {
-        "title": "Nevada Forward Initiative",
-        "details": [
-          "PI: Kenny Varner",
-          "Award: $3,000,000 (US DoE Augustus F. Hawkins Centers of Excellence Program Grant)"
-        ],
-        "metadata": "University of Nevada, Las Vegas | As a Postdoc | Jan 2025–present"
+        "subheading": "As a Postdoc",
+        "entries": [
+          {
+            "title": "Nevada Forward Initiative",
+            "institution": "University of Nevada, Las Vegas",
+            "date": "Jan 2025–present",
+            "details": [
+              "PI: Kenny Varner",
+              "Award: $3,000,000 (US DoE Augustus F. Hawkins Centers of Excellence Program Grant)"
+            ]
+          },
+          {
+            "title": "Math + SEL + E (US DoE SEED Grant)",
+            "institution": "The University of Texas at Arlington",
+            "date": "June 2024–Dec 2024",
+            "details": [
+              "PI: Candace Joswick",
+              "Award: $5,600,000 (Award #S423A220084)"
+            ]
+          },
+          {
+            "title": "Unpacking Computational Thinking (NSF DRK–12)",
+            "institution": "The Citadel and The University of Texas at Arlington",
+            "date": "June 2024–Dec 2024",
+            "details": [
+              "PIs: Jennifer Albert, Candace Joswick",
+              "Awards: $2,550,527 (Award #2300322), $443,801 (Award #2300323)"
+            ]
+          }
+        ]
       },
       {
-        "title": "Community college computer science and cyber study",
-        "details": [
-          "PI: Trent Dawson",
-          "UNLV IRB and CSN IRB approved",
-          "Status: Second semester of data collection"
-        ],
-        "metadata": "University of Nevada, Las Vegas (UNLV) and College of Southern Nevada (CSN) | Independent Research | July 2025–present"
+        "subheading": "Independent Research",
+        "entries": [
+          {
+            "title": "Community college computer science and cyber study",
+            "institution": "University of Nevada, Las Vegas (UNLV) and College of Southern Nevada (CSN)",
+            "date": "July 2025–present",
+            "details": [
+              "PI: Trent Dawson",
+              "UNLV IRB and CSN IRB approved",
+              "Status: Second semester of data collection"
+            ]
+          }
+        ]
       },
       {
-        "title": "Math + SEL + E (US DoE SEED Grant)",
-        "details": [
-          "PI: Candace Joswick",
-          "Award: $5,600,000 (Award #S423A220084)"
-        ],
-        "metadata": "The University of Texas at Arlington | As a Postdoc | June 2024–Dec 2024"
+        "subheading": "As a Grant Writer",
+        "entries": [
+          {
+            "title": "Integrating K–12 AI/Cybersecurity into Computer Science (NSF DRK–12)",
+            "institution": "The University of Texas at Arlington",
+            "date": "Oct 2024",
+            "details": [
+              "PI: Candace Joswick",
+              "Proposed Budget: $820,000"
+            ]
+          }
+        ]
       },
       {
-        "title": "Unpacking Computational Thinking (NSF DRK–12)",
-        "details": [
-          "PIs: Jennifer Albert, Candace Joswick",
-          "Awards: $2,550,527 (Award #2300322), $443,801 (Award #2300323)"
-        ],
-        "metadata": "The Citadel and The University of Texas at Arlington | As a Postdoc | June 2024–Dec 2024"
-      },
-      {
-        "title": "Integrating K–12 AI/Cybersecurity into Computer Science (NSF DRK–12)",
-        "details": [
-          "PI: Candace Joswick",
-          "Proposed Budget: $820,000"
-        ],
-        "metadata": "The University of Texas at Arlington | As a Grant Writer | Oct 2024"
-      },
-      {
-        "title": "Baton Rouge Bringing Youth Technology Education Success (NSF CISE/CNS)",
-        "details": [
-          "PI: Juana Moreno",
-          "Award: $5,000,000 (Award #1923573)"
-        ],
-        "metadata": "Louisiana State University | As a Graduate Assistant | May 2020–May 2022"
-      },
-      {
-        "title": "Expanding and Strengthening the STEM Teacher Workforce (US DoE SEED Grant)",
-        "details": [
-          "PI: Juana Moreno",
-          "Award: $1,000,000 (Award #U423A180139)"
-        ],
-        "metadata": "Louisiana State University | As a Graduate Assistant | May 2019–May 2021"
+        "subheading": "As a Graduate Assistant",
+        "entries": [
+          {
+            "title": "Baton Rouge Bringing Youth Technology Education Success (NSF CISE/CNS)",
+            "institution": "Louisiana State University",
+            "date": "May 2020–May 2022",
+            "details": [
+              "PI: Juana Moreno",
+              "Award: $5,000,000 (Award #1923573)"
+            ]
+          },
+          {
+            "title": "Expanding and Strengthening the STEM Teacher Workforce (US DoE SEED Grant)",
+            "institution": "Louisiana State University",
+            "date": "May 2019–May 2021",
+            "details": [
+              "PI: Juana Moreno",
+              "Award: $1,000,000 (Award #U423A180139)"
+            ]
+          }
+        ]
       }
     ],
     "teaching": [
