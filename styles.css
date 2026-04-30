@@ -38,7 +38,7 @@ a {
 }
 
 .nav {
-  width: min(800px, calc(100% - 28px));
+  width: min(830px, calc(100% - 28px));
   min-height: 46px;
   margin: 0 auto;
   display: flex;
@@ -92,7 +92,7 @@ a {
 }
 
 .cv-page {
-  width: min(800px, calc(100% - 28px));
+  width: min(830px, calc(100% - 28px));
   margin: 0 auto;
   padding: 30px 0 64px;
 }
@@ -114,7 +114,7 @@ a {
 
 .cv-summary {
   margin: 10px 0 0;
-  max-width: 780px;
+  max-width: 810px;
   color: var(--ink);
   font-size: 1rem;
   line-height: 1.5;
@@ -436,7 +436,7 @@ a {
 }
 
 .site-footer {
-  width: min(800px, calc(100% - 28px));
+  width: min(830px, calc(100% - 28px));
   margin: 0 auto;
   border-top: 1px solid var(--line);
   padding: 18px 0 30px;
