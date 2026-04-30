@@ -156,6 +156,33 @@
     });
   };
 
+  const renderTeaching = (container, groups) => {
+    container.innerHTML = "";
+    groups.forEach((group) => {
+      const groupNode = el("section", "teaching-group");
+      groupNode.appendChild(el("h3", "group-title", group.subheading));
+
+      const list = el("div", "teaching-list");
+      group.entries.forEach((entry) => {
+        const block = el("article", "teaching-entry");
+        block.appendChild(el("h3", "teaching-title", entry.title));
+        const metadata = [entry.institution, entry.date].filter(Boolean).join(" | ");
+        if (metadata) {
+          block.appendChild(el("p", "teaching-meta", metadata));
+        }
+        if (entry.details && entry.details.length) {
+          const details = el("ul", "entry-details");
+          entry.details.forEach((detail) => details.appendChild(el("li", "", detail)));
+          block.appendChild(details);
+        }
+        list.appendChild(block);
+      });
+
+      groupNode.appendChild(list);
+      container.appendChild(groupNode);
+    });
+  };
+
   const renderEducation = (container, entries) => {
     container.innerHTML = "";
     entries.forEach((entry) => {
@@ -246,6 +273,11 @@
 
     if (key === "grants" && Array.isArray(section)) {
       renderGrants(container, section);
+      return;
+    }
+
+    if (key === "teaching" && Array.isArray(section)) {
+      renderTeaching(container, section);
       return;
     }
 

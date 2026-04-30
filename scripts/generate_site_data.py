@@ -313,51 +313,62 @@ def grouped_appointments(lines: list[str]) -> list[dict[str, object]]:
 
 
 def grouped_teaching(lines: list[str]) -> list[dict[str, object]]:
-    entries: list[dict[str, object]] = []
-    group = ""
+    groups: list[dict[str, object]] = []
+    group: dict[str, object] | None = None
     index = 0
+
+    def start_group(label: str) -> dict[str, object]:
+        subheading = "Professional Development" if label == "Professional Development Workshops" else label
+        new_group = {"subheading": subheading, "entries": []}
+        groups.append(new_group)
+        return new_group
 
     while index < len(lines):
         line = lines[index]
         if line in TEACHING_GROUPS:
-            group = line
+            group = start_group(line)
             index += 1
             continue
 
-        if group == "Instructor of Record":
+        if group and group["subheading"] == "Instructor of Record":
             institution = lines[index + 1] if index + 1 < len(lines) else ""
             institution, date = split_trailing_date(institution)
-            entries.append({
+            group["entries"].append({
                 "title": line,
-                "metadata": compact_metadata([institution, date]),
-                "details": [group],
+                "institution": institution,
+                "date": date,
+                "details": [],
             })
             index += 2
             continue
 
-        if group == "Teaching Assistant":
+        if group and group["subheading"] == "Teaching Assistant":
             institution, date = split_trailing_date(line)
             details: list[str] = []
             index += 1
             while index < len(lines) and lines[index] not in TEACHING_GROUPS:
                 details.append(lines[index])
                 index += 1
-            entries.append({
-                "title": group,
-                "metadata": compact_metadata([institution, date]),
+            group["entries"].append({
+                "title": institution,
+                "institution": institution,
+                "date": date,
                 "details": details,
             })
             continue
 
         title, date = split_trailing_date(line)
-        entries.append({
+        if group is None:
+            group = start_group("Teaching")
+        group["entries"].append({
             "title": title,
-            "metadata": compact_metadata([group, date]),
+            "institution": "",
+            "date": date,
             "details": [],
         })
         index += 1
 
-    return entries
+    return [group for group in groups if group["entries"]]
 
 
 def grouped_service(lines: list[str]) -> list[dict[str, object]]:
@@ -434,7 +445,7 @@ def profile_from(header: list[str], sections: dict[str, list[str]]) -> dict[str,
         "stats": [
             {"value": str(sum(len(group["entries"]) for group in sections["publications"])), "label": "publication entries"},
             {"value": str(sum(len(group["entries"]) for group in sections["grants"])), "label": "grant entries"},
-            {"value": str(section_count(sections["teaching"])), "label": "teaching entries"},
+            {"value": str(sum(len(group["entries"]) for group in sections["teaching"])), "label": "teaching entries"},
             {"value": str(sum(len(group["entries"]) for group in sections["service"])), "label": "service entries"},
         ],
     }

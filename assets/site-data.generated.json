@@ -239,45 +239,60 @@
     ],
     "teaching": [
       {
-        "title": "EDUC 5394: Understanding and Designing Classroom Research (Graduate)",
-        "metadata": "The University of Texas at Arlington | Fall 2024",
-        "details": [
-          "Instructor of Record"
+        "subheading": "Instructor of Record",
+        "entries": [
+          {
+            "title": "EDUC 5394: Understanding and Designing Classroom Research (Graduate)",
+            "institution": "The University of Texas at Arlington",
+            "date": "Fall 2024",
+            "details": []
+          },
+          {
+            "title": "AMED 5600: Scholarly Activity for Academic Health Professionals (Graduate)",
+            "institution": "University of North Texas Health Science Center",
+            "date": "Spring 2024",
+            "details": []
+          },
+          {
+            "title": "English and math (High School Equivalency)",
+            "institution": "South Louisiana Community College & Baton Rouge Community College",
+            "date": "2018–2019",
+            "details": []
+          }
         ]
       },
       {
-        "title": "AMED 5600: Scholarly Activity for Academic Health Professionals (Graduate)",
-        "metadata": "University of North Texas Health Science Center | Spring 2024",
-        "details": [
-          "Instructor of Record"
+        "subheading": "Teaching Assistant",
+        "entries": [
+          {
+            "title": "Louisiana State University",
+            "institution": "Louisiana State University",
+            "date": "2019–2022",
+            "details": [
+              "CSC 2700: Computer Science Teaching Methods (Undergraduate)",
+              "EDCI 7141: Studies in the Teaching of Mathematics in Secondary Schools (Graduate)",
+              "EDCI 2500: Knowing and Learning in Mathematics Education (Undergraduate)",
+              "EDCI 7821 Problems with Curriculum and Instruction (Graduate)"
+            ]
+          }
         ]
       },
       {
-        "title": "English and math (High School Equivalency)",
-        "metadata": "South Louisiana Community College & Baton Rouge Community College | 2018–2019",
-        "details": [
-          "Instructor of Record"
+        "subheading": "Professional Development",
+        "entries": [
+          {
+            "title": "Quarterly Pre-Service Teacher PD, University of Nevada, Las Vegas",
+            "institution": "",
+            "date": "2025–present",
+            "details": []
+          },
+          {
+            "title": "Monthly In-Service Teacher PD, The University of Texas at Arlington",
+            "institution": "",
+            "date": "Fall 2024",
+            "details": []
+          }
         ]
-      },
-      {
-        "title": "Teaching Assistant",
-        "metadata": "Louisiana State University | 2019–2022",
-        "details": [
-          "CSC 2700: Computer Science Teaching Methods (Undergraduate)",
-          "EDCI 7141: Studies in the Teaching of Mathematics in Secondary Schools (Graduate)",
-          "EDCI 2500: Knowing and Learning in Mathematics Education (Undergraduate)",
-          "EDCI 7821 Problems with Curriculum and Instruction (Graduate)"
-        ]
-      },
-      {
-        "title": "Quarterly Pre-Service Teacher PD, University of Nevada, Las Vegas",
-        "metadata": "Professional Development Workshops | 2025–present",
-        "details": []
-      },
-      {
-        "title": "Monthly In-Service Teacher PD, The University of Texas at Arlington",
-        "metadata": "Professional Development Workshops | Fall 2024",
-        "details": []
       }
     ],
     "service": [
