@@ -431,6 +431,10 @@ a {
   margin-top: 4px;
 }
 
+.skill-name {
+  font-weight: 600;
+}
+
 .site-footer {
   width: min(800px, calc(100% - 28px));
   margin: 0 auto;

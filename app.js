@@ -209,7 +209,17 @@
   const renderSkills = (container, entries) => {
     container.innerHTML = "";
     const list = el("ul", "skills-list");
-    entries.forEach((entry) => list.appendChild(el("li", "skills-entry", entry)));
+    entries.forEach((entry) => {
+      const item = el("li", "skills-entry");
+      const splitIndex = entry.search(/[:(]/);
+      if (splitIndex > -1) {
+        item.appendChild(el("strong", "skill-name", entry.slice(0, splitIndex).trim()));
+        item.appendChild(el("span", "", entry.slice(splitIndex)));
+      } else {
+        item.textContent = entry;
+      }
+      list.appendChild(item);
+    });
     container.appendChild(list);
   };
 
@@ -224,10 +234,7 @@
     container.innerHTML = "";
     entries.forEach((entry) => {
       const block = el("article", "honor-entry");
-      block.appendChild(el("p", "honor-title", entry.title));
-      if (entry.label) {
-        block.appendChild(el("p", "honor-label", entry.label));
-      }
+      block.appendChild(el("p", "honor-title", [entry.title, entry.label].filter(Boolean).join(" | ")));
       entry.details.forEach((detail) => block.appendChild(el("p", "honor-detail", detail)));
       container.appendChild(block);
     });
