@@ -175,9 +175,7 @@
           block.appendChild(el("p", "teaching-date", entry.date));
         }
         if (entry.details && entry.details.length) {
-          const details = el("ul", "entry-details");
-          entry.details.forEach((detail) => details.appendChild(el("li", "", detail)));
-          block.appendChild(details);
+          block.appendChild(el("p", "teaching-details", entry.details.join("; ")));
         }
         list.appendChild(block);
       });

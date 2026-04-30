@@ -366,7 +366,8 @@ a {
 .grant-details,
 .teaching-title,
 .teaching-institution,
-.teaching-date {
+.teaching-date,
+.teaching-details {
   margin: 0;
   font-size: 1rem;
 }
@@ -380,7 +381,8 @@ a {
 .grant-meta,
 .grant-details,
 .teaching-institution,
-.teaching-date {
+.teaching-date,
+.teaching-details {
   color: var(--ink);
   font-weight: 400;
 }
@@ -391,7 +393,8 @@ a {
   font-size: 0.98rem;
 }
 
-.grant-details {
+.grant-details,
+.teaching-details {
   font-size: 0.96rem;
   line-height: 1.45;
 }
