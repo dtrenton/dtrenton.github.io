@@ -143,16 +143,12 @@
       group.entries.forEach((entry) => {
         const block = el("article", "grant-entry");
         block.appendChild(el("h3", "grant-title", entry.title));
-        if (entry.institution) {
-          block.appendChild(el("p", "grant-institution", entry.institution));
-        }
-        if (entry.date) {
-          block.appendChild(el("p", "grant-date", entry.date));
+        const metadata = [entry.institution, entry.date].filter(Boolean).join(" | ");
+        if (metadata) {
+          block.appendChild(el("p", "grant-meta", metadata));
         }
         if (entry.details && entry.details.length) {
-          const details = el("ul", "entry-details");
-          entry.details.forEach((detail) => details.appendChild(el("li", "", detail)));
-          block.appendChild(details);
+          block.appendChild(el("p", "grant-details", entry.details.join("; ")));
         }
         list.appendChild(block);
       });

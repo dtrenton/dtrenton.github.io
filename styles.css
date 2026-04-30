@@ -326,6 +326,10 @@ a {
   margin-top: 24px;
 }
 
+.grant-group + .grant-group {
+  margin-top: 18px;
+}
+
 .group-title,
 .service-subheading {
   margin: 0;
@@ -348,18 +352,18 @@ a {
 
 .grant-list {
   display: grid;
-  gap: 16px;
+  gap: 10px;
 }
 
 .grant-entry,
 .teaching-entry {
   display: grid;
-  gap: 2px;
+  gap: 1px;
 }
 
 .grant-title,
-.grant-institution,
-.grant-date,
+.grant-meta,
+.grant-details,
 .teaching-title,
 .teaching-institution,
 .teaching-date {
@@ -373,18 +377,23 @@ a {
   font-weight: 600;
 }
 
-.grant-institution,
-.grant-date,
+.grant-meta,
+.grant-details,
 .teaching-institution,
 .teaching-date {
   color: var(--ink);
   font-weight: 400;
 }
 
-.grant-date,
+.grant-meta,
 .teaching-date {
   color: var(--muted);
   font-size: 0.98rem;
+}
+
+.grant-details {
+  font-size: 0.96rem;
+  line-height: 1.45;
 }
 
 .teaching-list {
