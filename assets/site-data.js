@@ -377,10 +377,7 @@ window.SITE_DATA = {
       {
         "title": "International Computing Education Research (ICER) Doctoral Consortium (2021)",
         "label": "Fellowship",
-        "details": [
-          "One of 20 doctoral students selected internationally.",
-          "Presented dissertation research to esteemed CS faculty who offered feedback for improvement."
-        ]
+        "details": []
       }
     ],
     "skills": [

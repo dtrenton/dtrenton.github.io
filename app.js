@@ -214,7 +214,7 @@
       const splitIndex = entry.search(/[:(]/);
       if (splitIndex > -1) {
         item.appendChild(el("strong", "skill-name", entry.slice(0, splitIndex).trim()));
-        item.appendChild(el("span", "", entry.slice(splitIndex)));
+        item.appendChild(el("span", "", " " + entry.slice(splitIndex)));
       } else {
         item.textContent = entry;
       }
