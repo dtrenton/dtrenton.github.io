@@ -419,24 +419,6 @@ a {
   font-size: 1rem;
 }
 
-.service-text {
-  font-weight: 400;
-}
-
-.service-role {
-  font-weight: 600;
-}
-
-.service-date::before {
-  content: " | ";
-  color: var(--muted);
-}
-
-.service-date {
-  color: var(--muted);
-  font-size: 0.98rem;
-}
-
 .skills-list,
 .affiliations-list {
   margin: 0;

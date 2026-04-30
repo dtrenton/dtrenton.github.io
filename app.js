@@ -95,16 +95,7 @@
       const list = el("ul", "service-list");
       group.entries.forEach((entry) => {
         const item = el("li", "service-entry");
-        const commaIndex = entry.text.indexOf(",");
-        if (commaIndex > -1) {
-          item.appendChild(el("strong", "service-role", entry.text.slice(0, commaIndex)));
-          item.appendChild(el("span", "service-text", entry.text.slice(commaIndex)));
-        } else {
-          item.appendChild(el("span", "service-text", entry.text));
-        }
-        if (entry.date) {
-          item.appendChild(el("span", "service-date", entry.date));
-        }
+        item.textContent = [entry.text, entry.date].filter(Boolean).join(" | ");
         list.appendChild(item);
       });
 
