@@ -95,7 +95,13 @@
       const list = el("ul", "service-list");
       group.entries.forEach((entry) => {
         const item = el("li", "service-entry");
-        item.appendChild(el("span", "service-text", entry.text));
+        const commaIndex = entry.text.indexOf(",");
+        if (commaIndex > -1) {
+          item.appendChild(el("strong", "service-role", entry.text.slice(0, commaIndex)));
+          item.appendChild(el("span", "service-text", entry.text.slice(commaIndex)));
+        } else {
+          item.appendChild(el("span", "service-text", entry.text));
+        }
         if (entry.date) {
           item.appendChild(el("span", "service-date", entry.date));
         }
@@ -166,9 +172,11 @@
       group.entries.forEach((entry) => {
         const block = el("article", "teaching-entry");
         block.appendChild(el("h3", "teaching-title", entry.title));
-        const metadata = [entry.institution, entry.date].filter(Boolean).join(" | ");
-        if (metadata) {
-          block.appendChild(el("p", "teaching-meta", metadata));
+        if (entry.institution) {
+          block.appendChild(el("p", "teaching-institution", entry.institution));
+        }
+        if (entry.date) {
+          block.appendChild(el("p", "teaching-date", entry.date));
         }
         if (entry.details && entry.details.length) {
           const details = el("ul", "entry-details");
