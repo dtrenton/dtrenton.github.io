@@ -106,7 +106,7 @@ window.SITE_DATA = {
           "Joshi, D., Joswick, C., Jocius, R., Albert, J., Blanton, M., Petrulin, B., & Dawson, T.W. (2025). Assessing elementary teachers’ knowledge of integrated computational thinking. In Proceedings of the 56th Annual Technical Symposium on Computer Science Education (SIGCSE TS 2025), pp. 1501–1502. Pittsburgh, PA. https://doi.org/10.1145/3641555.3705131",
           "Dawson, T. W., Calabrese, J. E., & Joswick, C. (2025). The learning styles zombie concept: A systematic review of NCTM publications. In Proceedings of the Annual Meeting of the American Educational Research Association (AERA), Denver, CO.",
           "Dawson, T. W. (2021). The block-based, text-based, and CS1 prepared. In Proceedings of the 17th Annual Conference on International Computing Education Research (ICER), pp. 413–414. Virtual. https://doi.org/10.1145/3446871.3469777",
-          "Alegre, F., Moreno, J., Dawson, T., Tanjong, E. E., & Kirshner, D. H. (2020). Computational thinking for STEM teacher leadership training at Louisiana State University. In Proceedings of the Annual Research on Equity and Sustained Participation in Engineering, Computing, and Technology (RESPECT), pp. 1–2. Portland, OR. https://doi.org/10.1109/RESPECT49803.2020.9272455"
+          "Alegre, F., Moreno, J., Dawson, T. W., Tanjong, E. E., & Kirshner, D. H. (2020). Computational thinking for STEM teacher leadership training at Louisiana State University. In Proceedings of the Annual Research on Equity and Sustained Participation in Engineering, Computing, and Technology (RESPECT), pp. 1–2. Portland, OR. https://doi.org/10.1109/RESPECT49803.2020.9272455"
         ]
       },
       {
