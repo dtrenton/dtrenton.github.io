@@ -1,7 +1,7 @@
 :root {
   color-scheme: light;
   --ink: #161616;
-  --muted: #555;
+  --muted: #666;
   --line: #d7d7d0;
   --paper: #fdfdf9;
   --accent: #222;
@@ -195,7 +195,7 @@ a {
 .publication p,
 .grant p {
   margin: 4px 0 0;
-  color: var(--muted);
+  color: var(--ink);
   font-size: 1rem;
   font-weight: 400;
 }
@@ -212,15 +212,24 @@ a {
 
 .entry-meta,
 .entry-date {
+  font-weight: 400;
+}
+
+.entry-meta {
+  color: var(--ink);
+}
+
+.entry-date {
   color: var(--muted);
-  font-weight: 500;
+  font-size: 0.98rem;
 }
 
 .entry-details {
   margin: 6px 0 0;
-  padding-left: 1.15rem;
-  color: var(--muted);
-  font-size: 0.98rem;
+  padding-left: 1.35rem;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 400;
 }
 
 .entry-details li + li {
@@ -257,12 +266,14 @@ a {
 }
 
 .appointment-detail {
-  color: var(--muted);
+  color: var(--ink);
+  font-weight: 400;
 }
 
 .appointment-date {
   color: var(--muted);
-  font-weight: 500;
+  font-size: 0.98rem;
+  font-weight: 400;
 }
 
 .honor-entry {
@@ -286,8 +297,11 @@ a {
   font-weight: 600;
 }
 
-.honor-label,
 .honor-detail {
+  color: var(--ink);
+}
+
+.honor-label {
   color: var(--muted);
 }
 
@@ -351,6 +365,16 @@ a {
 .grant-institution,
 .grant-date,
 .teaching-meta {
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.grant-date {
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.teaching-meta {
   color: var(--muted);
 }
 
@@ -372,6 +396,10 @@ a {
   font-size: 1rem;
 }
 
+.service-text {
+  font-weight: 600;
+}
+
 .service-date::before {
   content: " | ";
   color: var(--muted);
@@ -379,6 +407,7 @@ a {
 
 .service-date {
   color: var(--muted);
+  font-size: 0.98rem;
 }
 
 .skills-list,
