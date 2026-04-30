@@ -365,6 +365,7 @@ a {
 .grant-meta,
 .grant-details,
 .teaching-title,
+.teaching-line,
 .teaching-institution,
 .teaching-date,
 .teaching-details {
@@ -373,9 +374,10 @@ a {
 }
 
 .grant-title,
-.teaching-title {
+.teaching-title,
+.teaching-line {
   color: var(--ink);
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .grant-meta,

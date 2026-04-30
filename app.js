@@ -167,6 +167,11 @@
       const list = el("div", "teaching-list");
       group.entries.forEach((entry) => {
         const block = el("article", "teaching-entry");
+        if (typeof entry === "string") {
+          block.appendChild(el("p", "teaching-line", entry));
+          list.appendChild(block);
+          return;
+        }
         block.appendChild(el("h3", "teaching-title", entry.title));
         if (entry.institution) {
           block.appendChild(el("p", "teaching-institution", entry.institution));

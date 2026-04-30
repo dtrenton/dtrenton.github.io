@@ -29,7 +29,7 @@ window.SITE_DATA = {
         "label": "grant entries"
       },
       {
-        "value": "6",
+        "value": "9",
         "label": "teaching entries"
       },
       {
@@ -241,57 +241,25 @@ window.SITE_DATA = {
       {
         "subheading": "Instructor of Record",
         "entries": [
-          {
-            "title": "EDUC 5394: Understanding and Designing Classroom Research (Graduate)",
-            "institution": "The University of Texas at Arlington",
-            "date": "Fall 2024",
-            "details": []
-          },
-          {
-            "title": "AMED 5600: Scholarly Activity for Academic Health Professionals (Graduate)",
-            "institution": "University of North Texas Health Science Center",
-            "date": "Spring 2024",
-            "details": []
-          },
-          {
-            "title": "English and math (High School Equivalency)",
-            "institution": "South Louisiana Community College & Baton Rouge Community College",
-            "date": "2018–2019",
-            "details": []
-          }
+          "EDUC 5394: Understanding and Designing Classroom Research (Graduate) | The University of Texas at Arlington | Fall 2024",
+          "AMED 5600: Scholarly Activity for Academic Health Professionals (Graduate) | University of North Texas Health Science Center | Spring 2024",
+          "English and math (High School Equivalency) | South Louisiana Community College & Baton Rouge Community College | 2018–2019"
         ]
       },
       {
         "subheading": "Teaching Assistant",
         "entries": [
-          {
-            "title": "Louisiana State University",
-            "institution": "Louisiana State University",
-            "date": "2019–2022",
-            "details": [
-              "CSC 2700: Computer Science Teaching Methods (Undergraduate)",
-              "EDCI 7141: Studies in the Teaching of Mathematics in Secondary Schools (Graduate)",
-              "EDCI 2500: Knowing and Learning in Mathematics Education (Undergraduate)",
-              "EDCI 7821 Problems with Curriculum and Instruction (Graduate)"
-            ]
-          }
+          "CSC 2700: Computer Science Teaching Methods (Undergraduate) | Louisiana State University | 2019–2022",
+          "EDCI 7141: Studies in the Teaching of Mathematics in Secondary Schools (Graduate) | Louisiana State University | 2019–2022",
+          "EDCI 2500: Knowing and Learning in Mathematics Education (Undergraduate) | Louisiana State University | 2019–2022",
+          "EDCI 7821 Problems with Curriculum and Instruction (Graduate) | Louisiana State University | 2019–2022"
         ]
       },
       {
         "subheading": "Professional Development",
         "entries": [
-          {
-            "title": "Quarterly Pre-Service Teacher PD, University of Nevada, Las Vegas",
-            "institution": "",
-            "date": "2025–present",
-            "details": []
-          },
-          {
-            "title": "Monthly In-Service Teacher PD, The University of Texas at Arlington",
-            "institution": "",
-            "date": "Fall 2024",
-            "details": []
-          }
+          "Quarterly Pre-Service Teacher PD | University of Nevada, Las Vegas | 2025–present",
+          "Monthly In-Service Teacher PD | The University of Texas at Arlington | Fall 2024"
         ]
       }
     ],

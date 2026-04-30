@@ -52,6 +52,7 @@ GRANT_ROLES = {
 TEACHING_GROUPS = {
     "Instructor of Record",
     "Teaching Assistant",
+    "Professional Development",
     "Professional Development Workshops",
 }
 
@@ -323,6 +324,16 @@ def grouped_teaching(lines: list[str]) -> list[dict[str, object]]:
         groups.append(new_group)
         return new_group
 
+    def combined_entry(title: str, institution: str, date: str) -> str:
+        return compact_metadata([title, institution, date])
+
+    def split_activity_line(line: str) -> tuple[str, str, str]:
+        title_and_institution, date = split_trailing_date(line)
+        if "," not in title_and_institution:
+            return title_and_institution, "", date
+        title, institution = title_and_institution.split(",", 1)
+        return title.strip(), institution.strip(), date
+
     while index < len(lines):
         line = lines[index]
         if line in TEACHING_GROUPS:
@@ -333,39 +344,22 @@ def grouped_teaching(lines: list[str]) -> list[dict[str, object]]:
         if group and group["subheading"] == "Instructor of Record":
             institution = lines[index + 1] if index + 1 < len(lines) else ""
             institution, date = split_trailing_date(institution)
-            group["entries"].append({
-                "title": line,
-                "institution": institution,
-                "date": date,
-                "details": [],
-            })
+            group["entries"].append(combined_entry(line, institution, date))
             index += 2
             continue
 
         if group and group["subheading"] == "Teaching Assistant":
             institution, date = split_trailing_date(line)
-            details: list[str] = []
             index += 1
             while index < len(lines) and lines[index] not in TEACHING_GROUPS:
-                details.append(lines[index])
+                group["entries"].append(combined_entry(lines[index], institution, date))
                 index += 1
-            group["entries"].append({
-                "title": institution,
-                "institution": institution,
-                "date": date,
-                "details": details,
-            })
             continue
 
-        title, date = split_trailing_date(line)
         if group is None:
             group = start_group("Teaching")
-        group["entries"].append({
-            "title": title,
-            "institution": "",
-            "date": date,
-            "details": [],
-        })
+        title, institution, date = split_activity_line(line)
+        group["entries"].append(combined_entry(title, institution, date))
         index += 1
 
     return [group for group in groups if group["entries"]]
