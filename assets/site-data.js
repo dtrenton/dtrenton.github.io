@@ -84,7 +84,7 @@ window.SITE_DATA = {
         "date": "2025–2026"
       },
       {
-        "status": "Prior Appointments",
+        "status": "Prior Appointment",
         "titles": [
           "Postdoctoral Researcher",
           "Adjunct Assistant Professor"

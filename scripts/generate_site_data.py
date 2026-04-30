@@ -286,8 +286,6 @@ def grouped_appointments(lines: list[str]) -> list[dict[str, object]]:
             display_date = "Begins June 2026"
         elif pending_date == "2025–2026":
             status = "Current Appointment"
-        elif len(entries) > 0:
-            status = "Prior Appointments"
         entries.append({
             "status": status,
             "titles": pending_roles,
