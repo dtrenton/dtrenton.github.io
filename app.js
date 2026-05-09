@@ -6,10 +6,9 @@
   }
 
   const setText = (selector, value) => {
-    const node = document.querySelector(selector);
-    if (node) {
+    document.querySelectorAll(selector).forEach((node) => {
       node.textContent = value || "";
-    }
+    });
   };
 
   const el = (tag, className, text) => {
@@ -30,10 +29,27 @@
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 
-  const formatPublication = (text) => escapeHtml(text)
-    .replaceAll("Trent W. Dawson", "<strong>Trent W. Dawson</strong>")
-    .replaceAll("Dawson, T. W.", "<strong>Dawson, T. W.</strong>")
-    .replaceAll("Dawson, T.W.", "<strong>Dawson, T.W.</strong>");
+  const escapeRegExp = (text) => String(text).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const shortName = data.profile.name ? data.profile.name.replace(/,\s*Ph\.D\.$/, "") : "";
+  const nameParts = shortName.split(/\s+/).filter(Boolean);
+  const lastName = nameParts.at(-1) || "";
+  const initials = nameParts.slice(0, -1).map((part) => `${part.charAt(0)}.`);
+  const citationNameVariants = [
+    data.profile.name,
+    shortName,
+    lastName && initials.length ? `${lastName}, ${initials.join(" ")}` : "",
+    lastName && initials.length ? `${lastName}, ${initials.join("")}` : "",
+  ]
+    .filter(Boolean)
+    .sort((a, b) => b.length - a.length);
+
+  const citationNamePattern = citationNameVariants.length
+    ? new RegExp(citationNameVariants.map(escapeRegExp).join("|"), "g")
+    : null;
+
+  const formatPublication = (text) => citationNamePattern
+    ? escapeHtml(text).replace(citationNamePattern, (name) => `<strong>${name}</strong>`)
+    : escapeHtml(text);
 
   const renderSimpleItem = (item) => {
     const card = el("article", "item");
@@ -240,8 +256,27 @@
     });
   };
 
+  setText("[data-field='name']", data.profile.name);
   setText("[data-field='summary']", data.profile.summary);
   setText("[data-field='focus']", data.profile.focus);
+
+  const title = data.profile.name ? `${data.profile.name} | Academic CV` : "Academic CV";
+  document.title = title;
+
+  const description = document.querySelector("meta[name='description']");
+  if (description) {
+    description.setAttribute(
+      "content",
+      data.profile.name
+        ? `Academic CV website for ${data.profile.name}, featuring appointments, publications, grants, teaching, service, and honors.`
+        : "Academic CV website featuring appointments, publications, grants, teaching, service, and honors."
+    );
+  }
+
+  const brand = document.querySelector(".brand");
+  if (brand) {
+    brand.setAttribute("aria-label", data.profile.name ? `${data.profile.name} home` : "Academic CV home");
+  }
 
   const contact = document.querySelector("[data-render='contact']");
   if (contact) {
