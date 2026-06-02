@@ -64,7 +64,7 @@ window.SITE_DATA = {
     ],
     "appointments": [
       {
-        "status": "Current Appointment",
+        "status": "Current Appointments",
         "titles": [
           "Assistant Professor",
           "Director, Governors Cyber Academy"
