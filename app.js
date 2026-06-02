@@ -210,9 +210,6 @@
     container.innerHTML = "";
     entries.forEach((entry) => {
       const block = el("article", "appointment-entry");
-      if (entry.status) {
-        block.appendChild(el("h3", "appointment-status", entry.status));
-      }
       entry.titles.forEach((title) => block.appendChild(el("p", "appointment-title", title)));
       entry.details.forEach((detail) => block.appendChild(el("p", "appointment-detail", detail)));
       if (entry.date) {
