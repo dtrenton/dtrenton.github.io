@@ -269,16 +269,15 @@ def grouped_education(lines: list[str]) -> list[dict[str, str]]:
             if not DEGREE_LINE.match(next_line) and not re.match(r"^(Dissertation|Advisor):", next_line, re.IGNORECASE):
                 field = next_line
                 index += 1
-        text_parts = [match.group("degree")]
+        text = f"{match.group('degree')}; {match.group('institution')} ({match.group('year')})"
         if field:
-            text_parts.append(field)
-        text_parts.append(match.group("institution"))
+            text = f"{text}; {field}"
         entries.append({
             "degree": match.group("degree"),
             "institution": match.group("institution"),
             "year": match.group("year"),
             "field": field,
-            "text": f"{', '.join(text_parts)} ({match.group('year')})",
+            "text": text,
         })
         index += 1
     return entries
