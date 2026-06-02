@@ -44,19 +44,22 @@ window.SITE_DATA = {
         "degree": "Ph.D.",
         "institution": "Louisiana State University",
         "year": "2022",
-        "text": "Ph.D., Louisiana State University (2022)"
+        "field": "Curriculum Studies (Computer Science Education emphasis)",
+        "text": "Ph.D., Curriculum Studies (Computer Science Education emphasis), Louisiana State University (2022)"
       },
       {
         "degree": "M.Ed.",
         "institution": "Virginia Polytechnic Institute and State University",
         "year": "2017",
-        "text": "M.Ed., Virginia Polytechnic Institute and State University (2017)"
+        "field": "Instructional Design and Technology",
+        "text": "M.Ed., Instructional Design and Technology, Virginia Polytechnic Institute and State University (2017)"
       },
       {
         "degree": "B.B.A.",
         "institution": "The University of Oklahoma",
         "year": "2002",
-        "text": "B.B.A., The University of Oklahoma (2002)"
+        "field": "Marketing",
+        "text": "B.B.A., Marketing, The University of Oklahoma (2002)"
       }
     ],
     "appointments": [

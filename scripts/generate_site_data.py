@@ -256,16 +256,31 @@ def grouped_publications(lines: list[str]) -> list[dict[str, object]]:
 
 def grouped_education(lines: list[str]) -> list[dict[str, str]]:
     entries: list[dict[str, str]] = []
-    for line in lines:
+    index = 0
+    while index < len(lines):
+        line = lines[index]
         match = DEGREE_LINE.match(line)
         if not match:
+            index += 1
             continue
+        field = ""
+        if index + 1 < len(lines):
+            next_line = lines[index + 1]
+            if not DEGREE_LINE.match(next_line) and not re.match(r"^(Dissertation|Advisor):", next_line, re.IGNORECASE):
+                field = next_line
+                index += 1
+        text_parts = [match.group("degree")]
+        if field:
+            text_parts.append(field)
+        text_parts.append(match.group("institution"))
         entries.append({
             "degree": match.group("degree"),
             "institution": match.group("institution"),
             "year": match.group("year"),
-            "text": f"{match.group('degree')}, {match.group('institution')} ({match.group('year')})",
+            "field": field,
+            "text": f"{', '.join(text_parts)} ({match.group('year')})",
         })
+        index += 1
     return entries
 
 
