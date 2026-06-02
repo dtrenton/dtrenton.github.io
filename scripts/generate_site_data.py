@@ -279,18 +279,12 @@ def grouped_appointments(lines: list[str]) -> list[dict[str, object]]:
         nonlocal pending_roles, pending_date, details
         if not pending_roles and not details:
             return
-        status = "Prior Appointment"
-        display_date = pending_date
-        if pending_date == "June 2026":
-            status = "Incoming Appointment"
-            display_date = "Begins June 2026"
-        elif pending_date == "2025–2026":
-            status = "Current Appointment"
+        status = "Current Appointment" if "present" in pending_date.lower() else "Prior Appointment"
         entries.append({
             "status": status,
             "titles": pending_roles,
             "details": details,
-            "date": display_date,
+            "date": pending_date,
         })
         pending_roles = []
         pending_date = ""
