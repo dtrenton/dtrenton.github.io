@@ -13,10 +13,6 @@ window.SITE_DATA = {
       {
         "label": "ORCID",
         "value": "0000-0003-1845-8696"
-      },
-      {
-        "label": "Location",
-        "value": "Las Vegas, Nevada 89154"
       }
     ],
     "stats": [

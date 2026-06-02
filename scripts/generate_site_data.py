@@ -443,7 +443,6 @@ def profile_from(header: list[str], sections: dict[str, list[str]]) -> dict[str,
         "contact": [
             {"label": "Email", "value": "dtrentonvt [at] gmail [dot] com"},
             {"label": "ORCID", "value": "0000-0003-1845-8696"},
-            {"label": "Location", "value": header[2] if len(header) > 2 else "Las Vegas, Nevada"},
         ],
         "stats": [
             {"value": str(sum(len(group["entries"]) for group in sections["publications"])), "label": "publication entries"},
