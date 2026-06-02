@@ -61,7 +61,7 @@ window.SITE_DATA = {
     ],
     "appointments": [
       {
-        "status": "Incoming Appointment",
+        "status": "Current Appointment",
         "titles": [
           "Assistant Professor",
           "Director, Governors Cyber Academy"
@@ -70,10 +70,10 @@ window.SITE_DATA = {
           "Dakota State University",
           "College of Education and Human Performance"
         ],
-        "date": "Begins June 2026"
+        "date": "2026–Present"
       },
       {
-        "status": "Current Appointment",
+        "status": "Prior Appointment",
         "titles": [
           "Postdoctoral Fellow"
         ],
