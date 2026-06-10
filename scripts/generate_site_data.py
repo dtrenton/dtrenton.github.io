@@ -57,6 +57,7 @@ TEACHING_GROUPS = {
 }
 
 PUBLICATION_GROUPS = {
+    "Peer-Reviewed Journal Articles",
     "Peer-Reviewed Conference Proceedings",
     "Peer-Reviewed Journal Articles in Revision/Review.",
     "Peer-Reviewed Journal Articles in Preparation",
