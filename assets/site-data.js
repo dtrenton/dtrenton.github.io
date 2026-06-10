@@ -17,7 +17,7 @@ window.SITE_DATA = {
     ],
     "stats": [
       {
-        "value": "33",
+        "value": "34",
         "label": "publication entries"
       },
       {
@@ -97,6 +97,13 @@ window.SITE_DATA = {
     ],
     "publications": [
       {
+        "subheading": "Publications",
+        "entries": [
+          "Peer-Reviewed Journal Articles",
+          "Dawson, T. W., Butler, M., & Fasching-Varner, K. J. (2026). What counts as competent teaching? A systematic narrative synthesis of teacher competencies in K–12 education. Teaching and Teacher Education, 181, 105684. https://doi.org/10.1016/j.tate.2026.105684"
+        ]
+      },
+      {
         "subheading": "Peer-Reviewed Conference Proceedings",
         "entries": [
           "Dawson, T. W. (2026). Exploring self-doubt in community college computer science: Evidence from exploratory factor analysis. In Proceedings of the 57th Technical Symposium on Computer Science Education (SIGCSE), pp. 1283–1284. St. Louis, MO. https://doi.org/10.1145/3770761.3777171",
@@ -111,7 +118,6 @@ window.SITE_DATA = {
       {
         "subheading": "Peer-Reviewed Journal Articles in Revision/Review",
         "entries": [
-          "Dawson, T.W., Butler, M., & Fasching-Varner, K.J. (revise & resubmit). What counts as competent teaching? A systematic narrative synthesis of teacher competencies in K–12 education. Teaching and Teacher Education.",
           "Dawson, T.W., Hack, M., Fasching-Varner, K.J. (revise and resubmit). Evaluating an online orientation within an apprenticeship teacher preparation pathway: Initial evidence of student satisfaction and preparedness. The Journal of Continuing Higher Education.",
           "Dawson, T. W., Hoffman, A., Sahin, B., & Fasching-Varner, K. J. (out for review). Program support and preservice teacher self-efficacy: A causal-comparative analysis of traditional and apprenticeship preparation pathways. Action in Teacher Education"
         ]
