@@ -60,7 +60,9 @@ PUBLICATION_GROUPS = {
     "Peer-Reviewed Journal Articles",
     "Peer-Reviewed Conference Proceedings",
     "Peer-Reviewed Journal Articles in Revision/Review.",
+    "Peer-Reviewed Journal Articles (under revision).",
     "Peer-Reviewed Journal Articles in Preparation",
+    "Peer-Reviewed Journal Articles (in preparation)",
     "Peer-Reviewed Conference Presentations",
 }
 
@@ -115,14 +117,15 @@ def split_sections(lines: list[str]) -> tuple[list[str], dict[str, list[str]]]:
             current = SECTION_ALIASES[normalized]
             seen_first_section = True
             continue
+        if not seen_first_section:
+            header.append(line)
+            continue
         if looks_like_major_heading(line):
             current = None
             seen_first_section = True
             continue
         if current:
             sections[current].append(line)
-        elif not seen_first_section:
-            header.append(line)
 
     return header, sections
 
@@ -241,7 +244,10 @@ def grouped_publications(lines: list[str]) -> list[dict[str, object]]:
 
     for line in lines:
         if line in PUBLICATION_GROUPS:
-            current = {"subheading": line.rstrip("."), "entries": []}
+            subheading = line.rstrip(".").replace("(under revision)", "Under Revision").replace(
+                "(in preparation)", "In Preparation"
+            )
+            current = {"subheading": subheading, "entries": []}
             groups.append(current)
             continue
 
@@ -421,29 +427,21 @@ def section_count(section: list[object]) -> int:
 
 
 def profile_from(header: list[str], sections: dict[str, list[str]]) -> dict[str, object]:
+    email_line = next((line for line in header if "@" in line), "")
+    email_line = re.sub(r"\s*\|\s*", " | ", email_line)
+    orcid_line = next((line for line in header if line.upper().startswith("ORCID")), "")
+    orcid = orcid_line.split(":", 1)[-1].strip() if orcid_line else ""
+    current_role = "Assistant Professor and Director of the Governors Cyber Academy at Dakota State University."
     return {
         "name": header[0] if header else "Trent W. Dawson, Ph.D.",
         "affiliation": header[1] if len(header) > 1 else "",
-        "location": header[2] if len(header) > 2 else "",
-        "summary": (
-            "Research examines pathways into computing and teaching, with related strands in community college "
-            "computer science and cyber education, equitable participation, and apprenticeship-based teacher "
-            "preparation. Currently a Postdoctoral Fellow at the University of Nevada, Las Vegas, where postdoctoral "
-            "work focuses on apprenticeship teacher preparation. Independent research focuses on community college "
-            "computer science and cyber pathways. Incoming Assistant Professor and Director of the Governors Cyber "
-            "Academy at Dakota State University beginning June 2026."
-        ),
-        "focus": (
-            "Research examines pathways into computing and teaching, with related strands in community college "
-            "computer science and cyber education, equitable participation, and apprenticeship-based teacher "
-            "preparation. Currently a Postdoctoral Fellow at the University of Nevada, Las Vegas, where postdoctoral "
-            "work focuses on apprenticeship teacher preparation. Independent research focuses on community college "
-            "computer science and cyber pathways. Incoming Assistant Professor and Director of the Governors Cyber "
-            "Academy at Dakota State University beginning June 2026."
-        ),
+        "location": "",
+        "summary": current_role,
+        "focus": current_role,
         "contact": [
-            {"label": "Email", "value": "dtrentonvt [at] gmail [dot] com"},
-            {"label": "ORCID", "value": "0000-0003-1845-8696"},
+            {"label": "Affiliation", "value": header[1] if len(header) > 1 else ""},
+            {"label": "Email", "value": email_line},
+            {"label": "ORCID", "value": orcid},
         ],
         "stats": [
             {"value": str(sum(len(group["entries"]) for group in sections["publications"])), "label": "publication entries"},

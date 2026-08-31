@@ -1,14 +1,18 @@
 window.SITE_DATA = {
   "profile": {
     "name": "Trent W. Dawson, Ph.D.",
-    "affiliation": "University of Nevada, Las Vegas",
-    "location": "Las Vegas, Nevada 89154",
-    "summary": "Research examines pathways into computing and teaching, with related strands in community college computer science and cyber education, equitable participation, and apprenticeship-based teacher preparation. Currently a Postdoctoral Fellow at the University of Nevada, Las Vegas, where postdoctoral work focuses on apprenticeship teacher preparation. Independent research focuses on community college computer science and cyber pathways. Incoming Assistant Professor and Director of the Governors Cyber Academy at Dakota State University beginning June 2026.",
-    "focus": "Research examines pathways into computing and teaching, with related strands in community college computer science and cyber education, equitable participation, and apprenticeship-based teacher preparation. Currently a Postdoctoral Fellow at the University of Nevada, Las Vegas, where postdoctoral work focuses on apprenticeship teacher preparation. Independent research focuses on community college computer science and cyber pathways. Incoming Assistant Professor and Director of the Governors Cyber Academy at Dakota State University beginning June 2026.",
+    "affiliation": "Dakota State University, Madison, SD",
+    "location": "",
+    "summary": "Assistant Professor and Director of the Governors Cyber Academy at Dakota State University.",
+    "focus": "Assistant Professor and Director of the Governors Cyber Academy at Dakota State University.",
     "contact": [
       {
+        "label": "Affiliation",
+        "value": "Dakota State University, Madison, SD"
+      },
+      {
         "label": "Email",
-        "value": "dtrentonvt [at] gmail [dot] com"
+        "value": "trent.dawson@dsu.edu | dtrentonvt@gmail.com"
       },
       {
         "label": "ORCID",
@@ -29,7 +33,7 @@ window.SITE_DATA = {
         "label": "teaching entries"
       },
       {
-        "value": "22",
+        "value": "23",
         "label": "service entries"
       }
     ]
@@ -99,7 +103,8 @@ window.SITE_DATA = {
       {
         "subheading": "Peer-Reviewed Journal Articles",
         "entries": [
-          "Dawson, T. W., Butler, M., & Fasching-Varner, K. J. (2026). What counts as competent teaching? A systematic narrative synthesis of teacher competencies in K–12 education. Teaching and Teacher Education, 181, 105684. https://doi.org/10.1016/j.tate.2026.105684"
+          "Dawson, T. W., Butler, M., & Fasching-Varner, K. J. (2026). What counts as competent teaching? A systematic narrative synthesis of teacher competencies in K–12 education. Teaching and Teacher Education, 181, 105684. https://doi.org/10.1016/j.tate.2026.105684",
+          "Dawson, T.W., Hack, M., Fasching-Varner, K. J. (2026). Onboarding Nontraditional Learners: An Evaluation of an Asynchronous Online Orientation in a Teacher Apprenticeship Program. 1–17. The Journal of Continuing Higher Education. https://doi.org/10.1080/07377363.2026.2724232"
         ]
       },
       {
@@ -115,23 +120,22 @@ window.SITE_DATA = {
         ]
       },
       {
-        "subheading": "Peer-Reviewed Journal Articles in Revision/Review",
+        "subheading": "Peer-Reviewed Journal Articles Under Revision",
         "entries": [
-          "Dawson, T.W., Hack, M., Fasching-Varner, K.J. (revise and resubmit). Evaluating an online orientation within an apprenticeship teacher preparation pathway: Initial evidence of student satisfaction and preparedness. The Journal of Continuing Higher Education.",
-          "Dawson, T. W., Hoffman, A., Sahin, B., & Fasching-Varner, K. J. (out for review). Program support and preservice teacher self-efficacy: A causal-comparative analysis of traditional and apprenticeship preparation pathways. Action in Teacher Education"
+          "Dawson, T.W., Joswick, C., Tobin, K., & Karadimou, O. (submitted). Exploring community college students’ perceptions of computer science: A pilot study of adapted computing attitudes surveys. Education Sciences.",
+          "Dawson, T. W., Hoffman, A., Sahin, B., & Fasching-Varner, K. J. (revise and resubmit). Program support and preservice teacher self-efficacy: A causal-comparative analysis of traditional and apprenticeship preparation pathways. Action in Teacher Education"
         ]
       },
       {
-        "subheading": "Peer-Reviewed Journal Articles in Preparation",
+        "subheading": "Peer-Reviewed Journal Articles In Preparation",
         "entries": [
-          "Hoffman, A., Hack, M., Dawson, T. W., & Fasching-Varner, K. J. (in preparation). Comparative analysis of start timing on satisfaction in an online asynchronous orientation.",
           "Salguero, M., Dawson, T.W. (in preparation). Systematic literature review examining institutional supports in shaping English learners’ transition into first-year college."
         ]
       },
       {
         "subheading": "Peer-Reviewed Conference Presentations",
         "entries": [
-          "Dawson, T. W. (accepted). Nevada Forward Initiative: A Workforce-Embedded Pathway for Nontraditional and Rural Learners. Proposal accepted for presentation at the 88th Annual Association for Continuing Higher Education (ACHE) Conference, Norfolk, VA.",
+          "Dawson, T. W. & Fasching-Varner, K. J. (accepted). Nevada Forward Initiative: A Workforce-Embedded Pathway for Nontraditional and Rural Learners. Proposal accepted for presentation at the 88th Annual Association for Continuing Higher Education (ACHE) Conference, Norfolk, VA.",
           "Dawson, T. W. (2026). A Pilot Study Exploring Attitudinal Dimensions in Community College Computer Science: Evidence from Exploratory Factor Analysis. Poster presented at the 57th ACM Technical Symposium on Computer Science Education (SIGCSE), St. Louis, MO.",
           "Dawson, T. W., Hoffman, A., Sahin, B., Hack, M., & Fasching-Varner, K. J. (2026). Investigating pre-service teachers’ perceived program support and its relationship to teaching self-efficacy across traditional and apprenticeship pathways. Accepted presentation at the Annual Meeting of the American Educational Research Association (AERA), Los Angeles, CA.",
           "Dawson, T. W. (2026). Adapting computing attitudes surveys for community college students: Emerging constructs from factor analysis. Accepted presentation at the Annual Meeting of the American Educational Research Association (AERA), Los Angeles, CA.",
@@ -313,6 +317,10 @@ window.SITE_DATA = {
       {
         "subheading": "Service to Journals and Conferences",
         "entries": [
+          {
+            "text": "Manuscript Reviewer, Teaching and Teacher Education",
+            "date": "2026"
+          },
           {
             "text": "Session Chair, Accessible Computing, SIGCSE",
             "date": "2026"
