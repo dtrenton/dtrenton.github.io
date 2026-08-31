@@ -47,9 +47,18 @@
     ? new RegExp(citationNameVariants.map(escapeRegExp).join("|"), "g")
     : null;
 
-  const formatPublication = (text) => citationNamePattern
-    ? escapeHtml(text).replace(citationNamePattern, (name) => `<strong>${name}</strong>`)
-    : escapeHtml(text);
+  const linkDoiUrls = (html) => html.replace(
+    /https:\/\/doi\.org\/[^\s<]+/g,
+    (url) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`
+  );
+
+  const formatPublication = (text) => {
+    const escapedText = escapeHtml(text);
+    const formattedText = citationNamePattern
+      ? escapedText.replace(citationNamePattern, (name) => `<strong>${name}</strong>`)
+      : escapedText;
+    return linkDoiUrls(formattedText);
+  };
 
   const renderSimpleItem = (item) => {
     const card = el("article", "item");

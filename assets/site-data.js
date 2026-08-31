@@ -122,7 +122,7 @@ window.SITE_DATA = {
       {
         "subheading": "Peer-Reviewed Journal Articles Under Revision",
         "entries": [
-          "Dawson, T.W., Joswick, C., Tobin, K., & Karadimou, O. (submitted). Exploring community college students’ perceptions of computer science: A pilot study of adapted computing attitudes surveys. Education Sciences.",
+          "Dawson, T.W., Joswick, C., Tobin, K., & Karadimou, O. (revise and resubmit). Exploring community college students’ perceptions of computer science: A pilot study of adapted computing attitudes surveys. Education Sciences.",
           "Dawson, T. W., Hoffman, A., Sahin, B., & Fasching-Varner, K. J. (revise and resubmit). Program support and preservice teacher self-efficacy: A causal-comparative analysis of traditional and apprenticeship preparation pathways. Action in Teacher Education"
         ]
       },
