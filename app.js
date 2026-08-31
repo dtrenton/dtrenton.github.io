@@ -1,24 +1,15 @@
 (function () {
   const data = window.SITE_DATA;
 
-  if (!data) {
+  if (!data || !data.profile || !data.sections) {
+    document.documentElement.classList.add("data-unavailable");
     return;
   }
 
-  const setText = (selector, value) => {
-    document.querySelectorAll(selector).forEach((node) => {
-      node.textContent = value || "";
-    });
-  };
-
   const el = (tag, className, text) => {
     const node = document.createElement(tag);
-    if (className) {
-      node.className = className;
-    }
-    if (text) {
-      node.textContent = text;
-    }
+    if (className) node.className = className;
+    if (text !== undefined && text !== null) node.textContent = text;
     return node;
   };
 
@@ -39,9 +30,7 @@
     shortName,
     lastName && initials.length ? `${lastName}, ${initials.join(" ")}` : "",
     lastName && initials.length ? `${lastName}, ${initials.join("")}` : "",
-  ]
-    .filter(Boolean)
-    .sort((a, b) => b.length - a.length);
+  ].filter(Boolean).sort((a, b) => b.length - a.length);
 
   const citationNamePattern = citationNameVariants.length
     ? new RegExp(citationNameVariants.map(escapeRegExp).join("|"), "g")
@@ -54,308 +43,243 @@
 
   const formatPublication = (text) => {
     const escapedText = escapeHtml(text);
-    const formattedText = citationNamePattern
+    const withAuthor = citationNamePattern
       ? escapedText.replace(citationNamePattern, (name) => `<strong>${name}</strong>`)
       : escapedText;
-    return linkDoiUrls(formattedText);
+    return linkDoiUrls(withAuthor);
   };
 
-  const renderSimpleItem = (item) => {
-    const card = el("article", "item");
-    if (typeof item === "string") {
-      card.appendChild(el("p", "raw-entry", item));
-      return card;
+  const yearFrom = (text) => (String(text).match(/\b(20\d{2})\b/) || [])[1] || "";
+  const setText = (selector, value) => document.querySelectorAll(selector).forEach((node) => {
+    node.textContent = value || "";
+  });
+
+  const profileContact = (label) => data.profile.contact.find((item) => item.label === label)?.value || "";
+  const email = profileContact("Email").split("|")[0].trim();
+  if (email) {
+    document.querySelectorAll('a[href^="mailto:"]').forEach((link) => link.href = `mailto:${email}`);
+  }
+  setText("[data-field='name']", data.profile.name);
+  document.title = `${data.profile.name} | Cyber Education`;
+
+  const headshot = document.querySelector("[data-headshot]");
+  const headshotFallback = document.querySelector("[data-headshot-fallback]");
+  const showHeadshotFallback = () => {
+    if (headshot) headshot.hidden = true;
+    if (headshotFallback) headshotFallback.hidden = false;
+  };
+  if (headshot) {
+    headshot.addEventListener("error", showHeadshotFallback, { once: true });
+    if (headshot.complete && headshot.naturalWidth === 0) showHeadshotFallback();
+  }
+
+  const featuredContainer = document.querySelector('[data-render="featured-publications"]');
+  if (featuredContainer) {
+    const publicationGroups = data.sections.publications || [];
+    const featured = [
+      ...(publicationGroups[0]?.entries || []).slice(0, 2).map((entry) => ({ entry, type: publicationGroups[0].subheading })),
+      ...(publicationGroups[1]?.entries || []).slice(0, 1).map((entry) => ({ entry, type: publicationGroups[1].subheading })),
+    ];
+    featured.forEach(({ entry, type }) => {
+      const article = el("article", "featured-publication");
+      article.appendChild(el("p", "featured-type", type));
+      const citation = el("p", "featured-citation");
+      citation.innerHTML = formatPublication(entry);
+      article.appendChild(citation);
+      article.appendChild(el("p", "featured-year", yearFrom(entry)));
+      featuredContainer.appendChild(article);
+    });
+  }
+
+  const currentWorkContainer = document.querySelector('[data-render="current-work"]');
+  if (currentWorkContainer) {
+    const currentAppointment = data.sections.appointments?.[0];
+    const currentGrants = (data.sections.grants || [])
+      .flatMap((group) => group.entries.map((entry) => ({ ...entry, group: group.subheading })))
+      .filter((entry) => /present/i.test(entry.date || ""))
+      .slice(0, 2);
+    const work = [];
+    if (currentAppointment) {
+      work.push({
+        label: "Leadership",
+        title: currentAppointment.titles.join(" & "),
+        detail: [currentAppointment.details[0], currentAppointment.date].filter(Boolean).join(" · "),
+      });
     }
-
-    card.appendChild(el("h3", "", item.title));
-    if (item.metadata) {
-      card.appendChild(el("p", "entry-meta", item.metadata));
-    }
-    if (item.date) {
-      card.appendChild(el("p", "entry-date", item.date));
-    }
-    if (item.details && item.details.length) {
-      const list = el("ul", "entry-details");
-      item.details.forEach((part) => list.appendChild(el("li", "", part)));
-      card.appendChild(list);
-    }
-    return card;
-  };
-
-  const renderGrouped = (container, groups, itemClass) => {
-    container.innerHTML = "";
-    groups.forEach((group) => {
-      const groupNode = el("section", "group");
-      groupNode.appendChild(el("h3", "group-title", group.title));
-      group.items.forEach((item) => {
-        const card = el("article", itemClass || "item");
-        if (typeof item === "string") {
-          card.appendChild(el("p", "raw-entry", item));
-        } else {
-          card.appendChild(el("h3", "", item.title));
-          if (item.metadata) {
-            card.appendChild(el("p", "entry-meta", item.metadata));
-          }
-          if (item.date) {
-            card.appendChild(el("p", "entry-date", item.date));
-          }
-          if (item.details && item.details.length) {
-            const list = el("ul", "entry-details");
-            item.details.forEach((part) => list.appendChild(el("li", "", part)));
-            card.appendChild(list);
-          }
-        }
-        groupNode.appendChild(card);
-      });
-      container.appendChild(groupNode);
+    currentGrants.forEach((entry) => work.push({
+      label: entry.group === "Independent Research" ? "Research" : "Project",
+      title: entry.title,
+      detail: [entry.institution, entry.date].filter(Boolean).join(" · "),
+    }));
+    work.forEach((entry) => {
+      const article = el("article", "current-work-item");
+      article.appendChild(el("p", "current-work-label", entry.label));
+      const copy = el("div");
+      copy.appendChild(el("h3", "", entry.title));
+      copy.appendChild(el("p", "", entry.detail));
+      article.appendChild(copy);
+      currentWorkContainer.appendChild(article);
     });
-  };
+  }
 
-  const renderService = (container, groups) => {
-    container.innerHTML = "";
-    groups.forEach((group) => {
-      const groupNode = el("section", "service-group");
-      groupNode.appendChild(el("h3", "service-subheading", group.subheading));
-
-      const list = el("ul", "service-list");
-      group.entries.forEach((entry) => {
-        const item = el("li", "service-entry");
-        item.textContent = [entry.text, entry.date].filter(Boolean).join(" | ");
-        list.appendChild(item);
-      });
-
-      groupNode.appendChild(list);
-      container.appendChild(groupNode);
+  const timelineContainer = document.querySelector('[data-render="experience-timeline"]');
+  if (timelineContainer) {
+    (data.sections.appointments || []).forEach((appointment, index) => {
+      const article = el("article", `timeline-item${index === 0 ? " current" : ""}`);
+      article.appendChild(el("div", "timeline-date", appointment.date));
+      const content = el("div", "timeline-content");
+      if (index === 0) content.appendChild(el("span", "timeline-status", "Current appointment"));
+      content.appendChild(el("h3", "", appointment.titles.join(" · ")));
+      content.appendChild(el("p", "", appointment.details.join(" · ")));
+      article.appendChild(content);
+      timelineContainer.appendChild(article);
     });
-  };
+  }
 
-  const renderPublications = (container, groups) => {
-    container.innerHTML = "";
-    groups.forEach((group) => {
-      const groupNode = el("section", "publication-group");
-      groupNode.appendChild(el("h3", "group-title", group.subheading));
-
-      const list = el("div", "publication-list");
-      group.entries.forEach((entry) => {
-        const card = el("article", "publication");
-        const citation = el("p", "raw-entry");
-        citation.innerHTML = formatPublication(entry);
-        card.appendChild(citation);
-        list.appendChild(card);
-      });
-
-      groupNode.appendChild(list);
-      container.appendChild(groupNode);
+  const teachingHighlights = document.querySelector('[data-render="teaching-highlights"]');
+  if (teachingHighlights) {
+    const teaching = data.sections.teaching || [];
+    const instructor = teaching.find((group) => group.subheading === "Instructor of Record");
+    const development = teaching.find((group) => /Professional Development/.test(group.subheading));
+    const leadershipTitle = data.sections.appointments?.[0]?.titles?.find((title) => /Director/.test(title));
+    const highlights = [
+      { title: "Program Leadership", text: leadershipTitle || "Academic program leadership" },
+      { title: "Instructor of Record", text: (instructor?.entries || []).map((entry) => entry.title).join(" · ") },
+      { title: "Professional Development", text: (development?.entries || []).map((entry) => entry.title).join(" · ") },
+      { title: "Graduate Teaching", text: teaching.find((group) => group.subheading === "Teaching Assistant")?.entries?.[0]?.institution || "Louisiana State University" },
+    ];
+    highlights.forEach((highlight) => {
+      const article = el("article", "teaching-highlight");
+      article.appendChild(el("h3", "", highlight.title));
+      article.appendChild(el("p", "", highlight.text));
+      teachingHighlights.appendChild(article);
     });
-  };
-
-  const renderGrants = (container, groups) => {
-    container.innerHTML = "";
-    groups.forEach((group) => {
-      const groupNode = el("section", "grant-group");
-      groupNode.appendChild(el("h3", "group-title", group.subheading));
-
-      const list = el("div", "grant-list");
-      group.entries.forEach((entry) => {
-        const block = el("article", "grant-entry");
-        block.appendChild(el("h3", "grant-title", entry.title));
-        const metadata = [entry.institution, entry.date].filter(Boolean).join(" | ");
-        if (metadata) {
-          block.appendChild(el("p", "grant-meta", metadata));
-        }
-        if (entry.details && entry.details.length) {
-          block.appendChild(el("p", "grant-details", entry.details.join("; ")));
-        }
-        list.appendChild(block);
-      });
-
-      groupNode.appendChild(list);
-      container.appendChild(groupNode);
-    });
-  };
-
-  const renderTeaching = (container, groups) => {
-    container.innerHTML = "";
-    groups.forEach((group) => {
-      const groupNode = el("section", "teaching-group");
-      groupNode.appendChild(el("h3", "group-title", group.subheading));
-
-      const list = el("div", "teaching-list");
-      group.entries.forEach((entry) => {
-        const block = el("article", "teaching-entry");
-        if (typeof entry === "string") {
-          block.appendChild(el("p", "teaching-line", entry));
-          list.appendChild(block);
-          return;
-        }
-        block.appendChild(el("h3", "teaching-title", entry.title));
-        if (entry.institution) {
-          block.appendChild(el("p", "teaching-institution", entry.institution));
-        }
-        if (entry.date) {
-          block.appendChild(el("p", "teaching-date", entry.date));
-        }
-        if (entry.details && entry.details.length) {
-          block.appendChild(el("p", "teaching-details", entry.details.join("; ")));
-        }
-        list.appendChild(block);
-      });
-
-      groupNode.appendChild(list);
-      container.appendChild(groupNode);
-    });
-  };
+  }
 
   const renderEducation = (container, entries) => {
-    container.innerHTML = "";
     entries.forEach((entry) => {
-      const card = el("article", "item education-entry");
-      card.appendChild(el("p", "compact-entry", entry.text));
-      container.appendChild(card);
+      const article = el("article", "item education-entry");
+      article.appendChild(el("p", "compact-entry", entry.text));
+      container.appendChild(article);
     });
   };
 
   const renderAppointments = (container, entries) => {
-    container.innerHTML = "";
     entries.forEach((entry) => {
-      const block = el("article", "appointment-entry");
-      entry.titles.forEach((title) => block.appendChild(el("p", "appointment-title", title)));
-      entry.details.forEach((detail) => block.appendChild(el("p", "appointment-detail", detail)));
-      if (entry.date) {
-        block.appendChild(el("p", "appointment-date", entry.date));
-      }
-      container.appendChild(block);
+      const article = el("article", "appointment-entry");
+      entry.titles.forEach((title) => article.appendChild(el("p", "appointment-title", title)));
+      entry.details.forEach((detail) => article.appendChild(el("p", "appointment-detail", detail)));
+      if (entry.date) article.appendChild(el("p", "appointment-date", entry.date));
+      container.appendChild(article);
+    });
+  };
+
+  const renderPublications = (container, groups) => {
+    groups.forEach((group) => {
+      const section = el("section", "publication-group");
+      section.appendChild(el("h4", "group-title", group.subheading));
+      const list = el("div", "publication-list");
+      group.entries.forEach((entry) => {
+        const article = el("article", "publication");
+        const citation = el("p", "raw-entry");
+        citation.innerHTML = formatPublication(entry);
+        article.appendChild(citation);
+        list.appendChild(article);
+      });
+      section.appendChild(list);
+      container.appendChild(section);
+    });
+  };
+
+  const renderGrants = (container, groups) => {
+    groups.forEach((group) => {
+      const section = el("section", "grant-group");
+      section.appendChild(el("h4", "group-title", group.subheading));
+      const list = el("div", "grant-list");
+      group.entries.forEach((entry) => {
+        const article = el("article", "grant-entry");
+        article.appendChild(el("h5", "grant-title", entry.title));
+        article.appendChild(el("p", "grant-meta", [entry.institution, entry.date].filter(Boolean).join(" · ")));
+        if (entry.details?.length) article.appendChild(el("p", "grant-details", entry.details.join("; ")));
+        list.appendChild(article);
+      });
+      section.appendChild(list);
+      container.appendChild(section);
+    });
+  };
+
+  const renderTeaching = (container, groups) => {
+    groups.forEach((group) => {
+      const section = el("section", "teaching-group");
+      section.appendChild(el("h4", "group-title", group.subheading));
+      const list = el("div", "teaching-list");
+      group.entries.forEach((entry) => {
+        const article = el("article", "teaching-entry");
+        article.appendChild(el("h5", "teaching-title", entry.title));
+        if (entry.institution) article.appendChild(el("p", "teaching-institution", entry.institution));
+        if (entry.date) article.appendChild(el("p", "teaching-date", entry.date));
+        if (entry.details?.length) article.appendChild(el("p", "teaching-details", entry.details.join("; ")));
+        list.appendChild(article);
+      });
+      section.appendChild(list);
+      container.appendChild(section);
+    });
+  };
+
+  const renderService = (container, groups) => {
+    groups.forEach((group) => {
+      const section = el("section", "service-group");
+      section.appendChild(el("h4", "service-subheading", group.subheading));
+      const list = el("ul", "service-list");
+      group.entries.forEach((entry) => list.appendChild(el("li", "service-entry", [entry.text, entry.date].filter(Boolean).join(" · "))));
+      section.appendChild(list);
+      container.appendChild(section);
+    });
+  };
+
+  const renderHonors = (container, entries) => {
+    entries.forEach((entry) => {
+      const article = el("article", "honor-entry");
+      article.appendChild(el("p", "honor-title", [entry.title, entry.label].filter(Boolean).join(" · ")));
+      entry.details.forEach((detail) => article.appendChild(el("p", "honor-detail", detail)));
+      container.appendChild(article);
     });
   };
 
   const renderSkills = (container, entries) => {
-    container.innerHTML = "";
     const list = el("ul", "skills-list");
     entries.forEach((entry) => {
       const item = el("li", "skills-entry");
       const splitIndex = entry.search(/[:(]/);
       if (splitIndex > -1) {
         item.appendChild(el("strong", "skill-name", entry.slice(0, splitIndex).trim()));
-        item.appendChild(el("span", "", " " + entry.slice(splitIndex)));
-      } else {
-        item.textContent = entry;
-      }
+        item.appendChild(el("span", "", ` ${entry.slice(splitIndex)}`));
+      } else item.textContent = entry;
       list.appendChild(item);
     });
     container.appendChild(list);
   };
 
   const renderAffiliations = (container, entries) => {
-    container.innerHTML = "";
     const list = el("ul", "affiliations-list");
     entries.forEach((entry) => list.appendChild(el("li", "affiliations-entry", entry)));
     container.appendChild(list);
   };
 
-  const renderHonors = (container, entries) => {
-    container.innerHTML = "";
-    entries.forEach((entry) => {
-      const block = el("article", "honor-entry");
-      block.appendChild(el("p", "honor-title", [entry.title, entry.label].filter(Boolean).join(" | ")));
-      entry.details.forEach((detail) => block.appendChild(el("p", "honor-detail", detail)));
-      container.appendChild(block);
-    });
-  };
-
-  setText("[data-field='name']", data.profile.name);
-  setText("[data-field='summary']", data.profile.summary);
-  setText("[data-field='focus']", data.profile.focus);
-
-  const title = data.profile.name ? `${data.profile.name} | Academic CV` : "Academic CV";
-  document.title = title;
-
-  const description = document.querySelector("meta[name='description']");
-  if (description) {
-    description.setAttribute(
-      "content",
-      data.profile.name
-        ? `Academic CV website for ${data.profile.name}, featuring appointments, publications, grants, teaching, service, and honors.`
-        : "Academic CV website featuring appointments, publications, grants, teaching, service, and honors."
-    );
-  }
-
-  const brand = document.querySelector(".brand");
-  if (brand) {
-    brand.setAttribute("aria-label", data.profile.name ? `${data.profile.name} home` : "Academic CV home");
-  }
-
-  const contact = document.querySelector("[data-render='contact']");
-  if (contact) {
-    contact.innerHTML = "";
-    data.profile.contact.forEach((item) => {
-      const row = el("div");
-      row.appendChild(el("dt", "", item.label));
-      row.appendChild(el("dd", "", item.value));
-      contact.appendChild(row);
-    });
-  }
-
   document.querySelectorAll("[data-section]").forEach((container) => {
     const key = container.dataset.section;
     const section = data.sections[key];
-    if (!section) {
-      return;
-    }
-
-    if (key === "education" && Array.isArray(section) && section.every((item) => item.text)) {
-      renderEducation(container, section);
-      return;
-    }
-
-    if (key === "appointments" && Array.isArray(section) && section.every((item) => item.titles)) {
-      renderAppointments(container, section);
-      return;
-    }
-
-    if (key === "publications" && Array.isArray(section)) {
-      renderPublications(container, section);
-      return;
-    }
-
-    if (key === "grants" && Array.isArray(section)) {
-      renderGrants(container, section);
-      return;
-    }
-
-    if (key === "teaching" && Array.isArray(section)) {
-      renderTeaching(container, section);
-      return;
-    }
-
-    if (key === "service" && Array.isArray(section)) {
-      renderService(container, section);
-      return;
-    }
-
-    if (key === "skills" && Array.isArray(section)) {
-      renderSkills(container, section);
-      return;
-    }
-
-    if (key === "affiliations" && Array.isArray(section)) {
-      renderAffiliations(container, section);
-      return;
-    }
-
-    if (key === "honors" && Array.isArray(section) && section.every((item) => item.title && item.label)) {
-      renderHonors(container, section);
-      return;
-    }
-
-    if (Array.isArray(section) && section.every((item) => typeof item === "string" || item.title)) {
-      container.innerHTML = "";
-      section.forEach((item) => container.appendChild(renderSimpleItem(item)));
-      return;
-    }
-
-    if (Array.isArray(section)) {
-      renderGrouped(container, section, key === "publications" ? "publication" : key === "grants" ? "grant" : "item");
-    }
+    if (!Array.isArray(section)) return;
+    container.innerHTML = "";
+    if (key === "education") renderEducation(container, section);
+    else if (key === "appointments") renderAppointments(container, section);
+    else if (key === "publications") renderPublications(container, section);
+    else if (key === "grants") renderGrants(container, section);
+    else if (key === "teaching") renderTeaching(container, section);
+    else if (key === "service") renderService(container, section);
+    else if (key === "honors") renderHonors(container, section);
+    else if (key === "skills") renderSkills(container, section);
+    else if (key === "affiliations") renderAffiliations(container, section);
   });
 
   const navToggle = document.querySelector(".nav-toggle");
@@ -365,9 +289,8 @@
       const isOpen = navLinks.classList.toggle("is-open");
       navToggle.setAttribute("aria-expanded", String(isOpen));
     });
-
     navLinks.addEventListener("click", (event) => {
-      if (event.target.matches("a")) {
+      if (event.target.closest("a")) {
         navLinks.classList.remove("is-open");
         navToggle.setAttribute("aria-expanded", "false");
       }
