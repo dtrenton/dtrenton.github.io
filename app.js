@@ -50,6 +50,19 @@
   };
 
   const yearFrom = (text) => (String(text).match(/\b(20\d{2})\b/) || [])[1] || "";
+  const publicationParts = (text) => {
+    const source = String(text);
+    const doi = (source.match(/https:\/\/doi\.org\/[^\s]+/) || [])[0] || "";
+    const clean = doi ? source.replace(doi, "").trim() : source;
+    const yearMatch = clean.match(/\((20\d{2})\)\.\s*/);
+    const year = yearMatch?.[1] || yearFrom(clean);
+    const authors = yearMatch ? clean.slice(0, yearMatch.index).replace(/[,.\s]+$/, "") : "";
+    const remainder = yearMatch ? clean.slice(yearMatch.index + yearMatch[0].length) : clean;
+    const titleEnd = remainder.indexOf(". ");
+    const title = titleEnd > -1 ? remainder.slice(0, titleEnd + 1) : remainder;
+    const venue = titleEnd > -1 ? remainder.slice(titleEnd + 2).trim() : "";
+    return { year, authors, title, venue, doi };
+  };
   const setText = (selector, value) => document.querySelectorAll(selector).forEach((node) => {
     node.textContent = value || "";
   });
@@ -81,12 +94,27 @@
       ...(publicationGroups[1]?.entries || []).slice(0, 1).map((entry) => ({ entry, type: publicationGroups[1].subheading })),
     ];
     featured.forEach(({ entry, type }) => {
-      const article = el("article", "featured-publication");
-      article.appendChild(el("p", "featured-type", type));
-      const citation = el("p", "featured-citation");
-      citation.innerHTML = formatPublication(entry);
-      article.appendChild(citation);
-      article.appendChild(el("p", "featured-year", yearFrom(entry)));
+      const parts = publicationParts(entry);
+      const article = el("article", "publication-row");
+      article.appendChild(el("div", "publication-year", parts.year));
+      const main = el("div", "publication-main");
+      main.appendChild(el("h3", "publication-title", parts.title));
+      const authors = el("p", "publication-authors");
+      authors.innerHTML = citationNamePattern
+        ? escapeHtml(parts.authors).replace(citationNamePattern, (name) => `<strong>${name}</strong>`)
+        : escapeHtml(parts.authors);
+      main.appendChild(authors);
+      article.appendChild(main);
+      const meta = el("div", "publication-meta");
+      meta.appendChild(el("p", "publication-venue", parts.venue || type));
+      if (parts.doi) {
+        const link = el("a", "publication-link", "DOI ↗");
+        link.href = parts.doi;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        meta.appendChild(link);
+      }
+      article.appendChild(meta);
       featuredContainer.appendChild(article);
     });
   }
@@ -111,14 +139,16 @@
       title: entry.title,
       detail: [entry.institution, entry.date].filter(Boolean).join(" · "),
     }));
-    work.forEach((entry) => {
-      const article = el("article", "current-work-item");
-      article.appendChild(el("p", "current-work-label", entry.label));
-      const copy = el("div");
-      copy.appendChild(el("h3", "", entry.title));
-      copy.appendChild(el("p", "", entry.detail));
-      article.appendChild(copy);
-      currentWorkContainer.appendChild(article);
+    work.forEach((entry, index) => {
+      const details = el("details", "project-item");
+      if (index === 0) details.open = true;
+      const summary = el("summary");
+      summary.appendChild(el("span", "project-label", entry.label));
+      summary.appendChild(el("span", "project-title", entry.title));
+      summary.appendChild(el("span", "project-toggle", "+"));
+      details.appendChild(summary);
+      details.appendChild(el("p", "project-detail", entry.detail));
+      currentWorkContainer.appendChild(details);
     });
   }
 
@@ -149,7 +179,7 @@
       { title: "Graduate Teaching", text: teaching.find((group) => group.subheading === "Teaching Assistant")?.entries?.[0]?.institution || "Louisiana State University" },
     ];
     highlights.forEach((highlight) => {
-      const article = el("article", "teaching-highlight");
+      const article = el("article", "teaching-row");
       article.appendChild(el("h3", "", highlight.title));
       article.appendChild(el("p", "", highlight.text));
       teachingHighlights.appendChild(article);
@@ -175,8 +205,9 @@
   };
 
   const renderPublications = (container, groups) => {
-    groups.forEach((group) => {
+    groups.forEach((group, index) => {
       const section = el("section", "publication-group");
+      section.dataset.publicationGroup = String(index);
       section.appendChild(el("h4", "group-title", group.subheading));
       const list = el("div", "publication-list");
       group.entries.forEach((entry) => {
@@ -281,6 +312,31 @@
     else if (key === "skills") renderSkills(container, section);
     else if (key === "affiliations") renderAffiliations(container, section);
   });
+
+  const publicationFilters = document.querySelector("[data-publication-filters]");
+  const publicationGroups = Array.from(document.querySelectorAll("#publications .publication-group"));
+  if (publicationFilters && publicationGroups.length) {
+    const addFilter = (label, value, pressed = false) => {
+      const button = el("button", "filter-button", label);
+      button.type = "button";
+      button.dataset.filter = value;
+      button.setAttribute("aria-pressed", String(pressed));
+      publicationFilters.appendChild(button);
+    };
+    addFilter("All", "all", true);
+    publicationGroups.forEach((group, index) => {
+      addFilter(group.querySelector(".group-title")?.textContent || `Group ${index + 1}`, String(index));
+    });
+    publicationFilters.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-filter]");
+      if (!button) return;
+      publicationFilters.querySelectorAll("button").forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+      const selected = button.dataset.filter;
+      publicationGroups.forEach((group) => {
+        group.hidden = selected !== "all" && group.dataset.publicationGroup !== selected;
+      });
+    });
+  }
 
   const navToggle = document.querySelector(".nav-toggle");
   const navLinks = document.querySelector(".nav-links");
