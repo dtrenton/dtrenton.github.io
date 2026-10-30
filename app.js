@@ -60,7 +60,10 @@
 
   const renderEducation = (container, entries) => entries.forEach((entry) => {
     const article = el("article", "education-entry");
-    article.appendChild(el("p", "compact-entry", entry.text));
+    article.appendChild(el("p", "education-degree", entry.degree));
+    article.appendChild(el("p", "education-institution", entry.institution));
+    if (entry.field) article.appendChild(el("p", "education-field", entry.field));
+    if (entry.year) article.appendChild(el("p", "education-year", entry.year));
     container.appendChild(article);
   });
 
