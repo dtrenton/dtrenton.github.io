@@ -16,7 +16,7 @@ window.SITE_DATA = {
       },
       {
         "label": "ORCID",
-        "value": "0000-0003-1845-8696"
+        "value": ""
       }
     ],
     "stats": [
@@ -177,7 +177,7 @@ window.SITE_DATA = {
             "institution": "Dakota State University (subaward)",
             "date": "",
             "details": [
-              "Submitted: $3.000.000"
+              "Submitted: $3,000,000"
             ]
           }
         ]
