@@ -17,7 +17,16 @@
   const parts = shortName.split(/\s+/).filter(Boolean);
   const lastName = parts.at(-1) || "";
   const initials = parts.slice(0, -1).map((part) => `${part.charAt(0)}.`);
-  const nameVariants = [data.profile.name, shortName, `${lastName}, ${initials.join(" ")}`, `${lastName}, ${initials.join("")}`].filter(Boolean).sort((a, b) => b.length - a.length);
+  const spacedInitials = initials.join(" ");
+  const compactInitials = initials.join("");
+  const nameVariants = [
+    data.profile.name,
+    shortName,
+    `${lastName}, ${spacedInitials}`,
+    `${lastName}, ${spacedInitials.replace(/\.$/, "")}`,
+    `${lastName}, ${compactInitials}`,
+    `${lastName}, ${compactInitials.replace(/\.$/, "")}`,
+  ].filter(Boolean).sort((a, b) => b.length - a.length);
   const authorPattern = nameVariants.length ? new RegExp(nameVariants.map(escapeRegExp).join("|"), "g") : null;
   const formatPublication = (text) => {
     const escaped = escapeHtml(text);
