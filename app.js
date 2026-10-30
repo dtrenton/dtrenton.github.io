@@ -48,7 +48,17 @@
   (data.profile.contact || []).forEach((item) => {
     const row = el("div");
     row.appendChild(el("dt", "", item.label));
-    row.appendChild(el("dd", "", item.value));
+    const value = el("dd");
+    if (item.label === "Email") {
+      item.value.split("|").map((address) => address.trim()).filter(Boolean).forEach((address) => {
+        const link = el("a", "contact-line", address);
+        link.href = `mailto:${address}`;
+        value.appendChild(link);
+      });
+    } else {
+      value.textContent = item.value;
+    }
+    row.appendChild(value);
     contact?.appendChild(row);
   });
 
