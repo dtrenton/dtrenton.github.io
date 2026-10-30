@@ -169,14 +169,16 @@
   const teachingHighlights = document.querySelector('[data-render="teaching-highlights"]');
   if (teachingHighlights) {
     const teaching = data.sections.teaching || [];
+    const teachingTitle = (entry) => typeof entry === "string" ? entry.split(" | ")[0] : entry?.title || "";
+    const teachingInstitution = (entry) => typeof entry === "string" ? entry.split(" | ")[1] || "" : entry?.institution || "";
     const instructor = teaching.find((group) => group.subheading === "Instructor of Record");
     const development = teaching.find((group) => /Professional Development/.test(group.subheading));
     const leadershipTitle = data.sections.appointments?.[0]?.titles?.find((title) => /Director/.test(title));
     const highlights = [
       { title: "Program Leadership", text: leadershipTitle || "Academic program leadership" },
-      { title: "Instructor of Record", text: (instructor?.entries || []).map((entry) => entry.title).join(" · ") },
-      { title: "Professional Development", text: (development?.entries || []).map((entry) => entry.title).join(" · ") },
-      { title: "Graduate Teaching", text: teaching.find((group) => group.subheading === "Teaching Assistant")?.entries?.[0]?.institution || "Louisiana State University" },
+      { title: "Instructor of Record", text: (instructor?.entries || []).map(teachingTitle).filter(Boolean).join(" · ") },
+      { title: "Professional Development", text: (development?.entries || []).map(teachingTitle).filter(Boolean).join(" · ") },
+      { title: "Graduate Teaching", text: teachingInstitution(teaching.find((group) => group.subheading === "Teaching Assistant")?.entries?.[0]) || "Louisiana State University" },
     ];
     highlights.forEach((highlight) => {
       const article = el("article", "teaching-row");

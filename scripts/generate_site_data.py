@@ -43,6 +43,7 @@ KNOWN_MAJOR_HEADINGS = {
 }
 
 GRANT_ROLES = {
+    "As Co-PI",
     "As a Postdoc",
     "As a Grant Writer",
     "As a Graduate Assistant",
@@ -61,6 +62,7 @@ PUBLICATION_GROUPS = {
     "Peer-Reviewed Conference Proceedings",
     "Peer-Reviewed Journal Articles in Revision/Review.",
     "Peer-Reviewed Journal Articles (under revision).",
+    "Peer-Reviewed Journal Articles (Revise & Resubmit).",
     "Peer-Reviewed Journal Articles in Preparation",
     "Peer-Reviewed Journal Articles (in preparation)",
     "Journal Articles (in preparation)",
@@ -246,8 +248,8 @@ def grouped_publications(lines: list[str]) -> list[dict[str, object]]:
     for line in lines:
         if line in PUBLICATION_GROUPS:
             subheading = line.rstrip(".").replace("(under revision)", "Under Revision").replace(
-                "(in preparation)", "In Preparation"
-            )
+                "(Revise & Resubmit)", "Under Revision"
+            ).replace("(in preparation)", "In Preparation")
             current = {"subheading": subheading, "entries": []}
             groups.append(current)
             continue
@@ -359,6 +361,11 @@ def grouped_teaching(lines: list[str]) -> list[dict[str, object]]:
             continue
 
         if group and group["subheading"] == "Instructor of Record":
+            if "," in line:
+                title, institution, date = split_activity_line(line)
+                group["entries"].append(combined_entry(title, institution, date))
+                index += 1
+                continue
             institution = lines[index + 1] if index + 1 < len(lines) else ""
             institution, date = split_trailing_date(institution)
             group["entries"].append(combined_entry(line, institution, date))
@@ -374,7 +381,7 @@ def grouped_teaching(lines: list[str]) -> list[dict[str, object]]:
             continue
 
         if group is None:
-            group = start_group("Teaching")
+            group = start_group("Instructor of Record")
         title, institution, date = split_activity_line(line)
         group["entries"].append(combined_entry(title, institution, date))
         index += 1

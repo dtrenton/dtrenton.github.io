@@ -21,15 +21,15 @@
     ],
     "stats": [
       {
-        "value": "41",
+        "value": "42",
         "label": "publication entries"
       },
       {
-        "value": "7",
+        "value": "8",
         "label": "grant entries"
       },
       {
-        "value": "9",
+        "value": "10",
         "label": "teaching entries"
       },
       {
@@ -142,6 +142,7 @@
       {
         "subheading": "Peer-Reviewed Conference Presentations",
         "entries": [
+          "Dawson, T. W (2026). How to Build Your Own Computer Science or Cyber Lesson. Workshop presentation at the 2026 annual DSU Cyber Camp for Teachers Conference. Dakota State University, Madison, SD.",
           "Dawson, T. W., Fluth, M., & Norberg, M. (2026). Ready-to-Implement Cyber Lessons for Every Grade Level. Presented at the South Dakota Society for Technology Annual Conference. Madison, SD.",
           "Dawson, T. W. & Fasching-Varner, K. J., & De Jong, D. (2026). Workforce-Embedded Pathways to Teaching Licensure: A Tale of Two Statewide Apprenticeship Programs. Paper presented at the 88th Annual Association for Continuing Higher Education (ACHE) Conference, Norfolk, VA.",
           "Dawson, T. W. (2026). A Pilot Study Exploring Attitudinal Dimensions in Community College Computer Science: Evidence from Exploratory Factor Analysis. Poster presented at the 57th ACM Technical Symposium on Computer Science Education (SIGCSE), St. Louis, MO.",
@@ -168,6 +169,19 @@
       }
     ],
     "grants": [
+      {
+        "subheading": "As Co-PI",
+        "entries": [
+          {
+            "title": "NSF E-CORE RII: BRIDGE: Building a Rural Innovation, Development, and Growth Ecosystem",
+            "institution": "Dakota State University (subaward)",
+            "date": "",
+            "details": [
+              "Submitted: $3.000.000"
+            ]
+          }
+        ]
+      },
       {
         "subheading": "As a Postdoc",
         "entries": [
@@ -257,6 +271,7 @@
       {
         "subheading": "Instructor of Record",
         "entries": [
+          "CSC 804: Computer and Cyber Science Research Methodology (PhD) | Dakota State University | Spring 2027",
           "EDUC 5394: Understanding and Designing Classroom Research (Graduate) | The University of Texas at Arlington | Fall 2024",
           "AMED 5600: Scholarly Activity for Academic Health Professionals (Graduate) | University of North Texas Health Science Center | Spring 2024",
           "English and math (High School Equivalency) | South Louisiana Community College & Baton Rouge Community College | 2018–2019"
