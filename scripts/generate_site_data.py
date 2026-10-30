@@ -63,6 +63,7 @@ PUBLICATION_GROUPS = {
     "Peer-Reviewed Journal Articles (under revision).",
     "Peer-Reviewed Journal Articles in Preparation",
     "Peer-Reviewed Journal Articles (in preparation)",
+    "Journal Articles (in preparation)",
     "Peer-Reviewed Conference Presentations",
 }
 
