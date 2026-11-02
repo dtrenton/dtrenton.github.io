@@ -28,8 +28,20 @@
     `${lastName}, ${compactInitials.replace(/\.$/, "")}`,
   ].filter(Boolean).sort((a, b) => b.length - a.length);
   const authorPattern = nameVariants.length ? new RegExp(nameVariants.map(escapeRegExp).join("|"), "g") : null;
-  const formatPublication = (text) => {
-    const escaped = escapeHtml(text);
+  const italicizeJournalName = (citation, groupName) => {
+    if (!/journal articles/i.test(groupName) || /in preparation/i.test(groupName)) return citation;
+    const doiStart = citation.indexOf(" https://doi.org/");
+    const citationBody = (doiStart > -1 ? citation.slice(0, doiStart) : citation).replace(/[.\s]+$/, "");
+    const titleEnd = citationBody.lastIndexOf(". ");
+    if (titleEnd < 0) return citation;
+    const publicationDetails = citationBody.slice(titleEnd + 2);
+    const journalName = publicationDetails.split(",", 1)[0].trim();
+    if (!journalName) return citation;
+    const journalStart = titleEnd + 2;
+    return `${citation.slice(0, journalStart)}<em>${journalName}</em>${citation.slice(journalStart + journalName.length)}`;
+  };
+  const formatPublication = (text, groupName = "") => {
+    const escaped = italicizeJournalName(escapeHtml(text), groupName);
     const authored = authorPattern ? escaped.replace(authorPattern, (name) => `<strong>${name}</strong>`) : escaped;
     return authored.replace(/https:\/\/doi\.org\/[^\s<]+/g, (url) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`);
   };
@@ -93,7 +105,7 @@
     group.entries.forEach((entry) => {
       const article = el("article", "publication");
       const citation = el("p", "raw-entry");
-      citation.innerHTML = formatPublication(entry);
+      citation.innerHTML = formatPublication(entry, group.subheading);
       article.appendChild(citation);
       list.appendChild(article);
     });
