@@ -53,6 +53,10 @@
 
   document.title = `${data.profile.name} | Curriculum Vitae`;
   document.querySelectorAll("[data-field='name']").forEach((node) => { node.textContent = data.profile.name; });
+  document.querySelectorAll("[data-profile-updated]").forEach((node) => {
+    node.textContent = data.profile.updated ? `Updated on ${data.profile.updated}` : "";
+    node.hidden = !data.profile.updated;
+  });
   const email = data.profile.contact?.find((item) => item.label === "Email")?.value?.split("|")[0]?.trim();
   if (email) document.querySelectorAll('a[href^="mailto:"]').forEach((link) => { link.href = `mailto:${email}`; });
 
