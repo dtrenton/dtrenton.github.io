@@ -1,4 +1,4 @@
-{
+window.SITE_DATA = {
   "profile": {
     "name": "Trent W. Dawson, Ph.D.",
     "affiliation": "Dakota State University, Madison, SD",
