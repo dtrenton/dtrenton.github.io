@@ -486,10 +486,7 @@ window.SITE_DATA = {
     "honors": [
       {
         "title": "International Computing Education Research (ICER) Doctoral Consortium Fellow",
-        "label": "Fellowship",
-        "details": [
-          "2021"
-        ]
+        "date": "2021"
       }
     ],
     "skills": [

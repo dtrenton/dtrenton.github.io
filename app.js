@@ -163,7 +163,7 @@
   const renderHonors = (container, entries) => entries.forEach((entry) => {
     const article = el("article", "honor-entry");
     article.appendChild(el("p", "honor-title", entry.title));
-    if (entry.label) article.appendChild(el("p", "honor-detail", entry.label));
+    if (entry.date) article.appendChild(el("p", "honor-detail", entry.date));
     entry.details?.forEach((detail) => article.appendChild(el("p", "honor-detail", detail)));
     container.appendChild(article);
   });
