@@ -59,7 +59,17 @@
   const contact = document.querySelector("[data-profile-contact]");
   (data.profile.contact || []).forEach((item) => {
     const row = el("div");
-    row.appendChild(el("dt", "", item.label));
+    const label = el("dt");
+    if (item.url) {
+      const link = el("a", "", item.label);
+      link.href = item.url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      label.appendChild(link);
+    } else {
+      label.textContent = item.label;
+    }
+    row.appendChild(label);
     const value = el("dd");
     if (item.label === "Email") {
       item.value.split("|").map((address) => address.trim()).filter(Boolean).forEach((address) => {

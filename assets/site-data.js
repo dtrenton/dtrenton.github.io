@@ -16,6 +16,7 @@ window.SITE_DATA = {
       },
       {
         "label": "ORCID",
+        "url": "https://orcid.org/0000-0003-1845-8696",
         "value": ""
       }
     ],
